@@ -1,0 +1,839 @@
+URL: http://api.yelp.com/v2/search?term=restaurant&location=Troy%2C+NY
+Signed URL: http://api.yelp.com/v2/search?oauth_body_hash=2jmj7l5rSw0yVb%2FvlWAYkK%2FYBwk%3D&term=restaurant&oauth_nonce=61440280&oauth_timestamp=1382317862&oauth_consumer_key=-BEVFQVZmk5rZcKaiZGing&oauth_signature_method=HMAC-SHA1&oauth_token=Xi0W1EX2VlOfyc7Cy3nmxoG-gaewffeX&location=Troy%2C+NY&oauth_signature=zpE29OFfmrFwkNdx40NHD%2FXZ34E%3D
+
+{
+  "businesses": [
+    {
+      "categories": [
+        [
+          "Polish", 
+          "polish"
+        ], 
+        [
+          "German", 
+          "german"
+        ], 
+        [
+          "Ethnic Food", 
+          "ethnicmarkets"
+        ]
+      ], 
+      "display_phone": "+1-518-271-6892", 
+      "id": "muza-troy", 
+      "image_url": "http://s3-media4.ak.yelpcdn.com/bphoto/cPbAJzKVz4KiJQxv29PKBA/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "1300 15th St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "1300 15th St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "menu_date_updated": 1377793418, 
+      "menu_provider": "single_platform", 
+      "mobile_url": "http://m.yelp.com/biz/muza-troy", 
+      "name": "Muza", 
+      "phone": "5182716892", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 37, 
+      "snippet_image_url": "http://s3-media1.ak.yelpcdn.com/photo/b_SabQfZ4cCshpbrRcWIkw/ms.jpg", 
+      "snippet_text": "I only have good things to say about this spot. It's a quaint, family-run restaurant with delicious food.\n\nTheir perogies, sauerkraut, potato pancakes, and...", 
+      "url": "http://www.yelp.com/biz/muza-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Middle Eastern", 
+          "mideastern"
+        ], 
+        [
+          "Ethnic Food", 
+          "ethnicmarkets"
+        ]
+      ], 
+      "display_phone": "+1-518-270-9404", 
+      "id": "beirut-restaurant-troy", 
+      "image_url": "http://s3-media4.ak.yelpcdn.com/bphoto/YXzXPfsY5zXMZ17rZL9fdA/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "184 River St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "184 River St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/beirut-restaurant-troy", 
+      "name": "Beirut Restaurant", 
+      "phone": "5182709404", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 36, 
+      "snippet_image_url": "http://s3-media4.ak.yelpcdn.com/photo/YFUMELzqiIs4g048CnxAkQ/ms.jpg", 
+      "snippet_text": "Fantastic falafel served by such a friendly man.  Eli will not only serve you great Middle Eastern food, but he'll also provide an excessive amount of...", 
+      "url": "http://www.yelp.com/biz/beirut-restaurant-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Italian", 
+          "italian"
+        ]
+      ], 
+      "display_phone": "+1-518-273-8546", 
+      "id": "lo-portos-troy", 
+      "image_url": "http://s3-media4.ak.yelpcdn.com/bphoto/cdR1-HFvVoq3Zden65TnLA/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "85 4th St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "85 4th St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/lo-portos-troy", 
+      "name": "Lo Porto's", 
+      "phone": "5182738546", 
+      "rating": 3.5, 
+      "rating_img_url": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png", 
+      "rating_img_url_large": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png", 
+      "rating_img_url_small": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png", 
+      "review_count": 23, 
+      "snippet_image_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/cc4afe21892e/default_avatars/user_medium_square.png", 
+      "snippet_text": "The best Italian meal I have had since I moved from downstate Arthur Ave. , Little Italy been to them both . This is just as good if not better.", 
+      "url": "http://www.yelp.com/biz/lo-portos-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Mexican", 
+          "mexican"
+        ], 
+        [
+          "Irish", 
+          "irish"
+        ]
+      ], 
+      "display_phone": "+1-518-273-2196", 
+      "id": "jose-malones-troy", 
+      "image_url": "http://s3-media1.ak.yelpcdn.com/bphoto/dYzgU-1XgPeyA8oGjLn7SA/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "405 River St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "405 River St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/jose-malones-troy", 
+      "name": "Jose Malones", 
+      "phone": "5182732196", 
+      "rating": 3.5, 
+      "rating_img_url": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png", 
+      "rating_img_url_large": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png", 
+      "rating_img_url_small": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png", 
+      "review_count": 63, 
+      "snippet_image_url": "http://s3-media3.ak.yelpcdn.com/photo/5pdWx3bafkHDoxg0U09HXg/ms.jpg", 
+      "snippet_text": "What a margarita should be - a nice tequila, fresh lime juice, and Cointreau. \n\nAn odd idea for a restaurant, Mexican and Irish food, but it works. Did I...", 
+      "url": "http://www.yelp.com/biz/jose-malones-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Chinese", 
+          "chinese"
+        ]
+      ], 
+      "display_phone": "+1-518-272-0036", 
+      "id": "plum-blossom-chinese-restaurant-troy", 
+      "image_url": "http://s3-media3.ak.yelpcdn.com/bphoto/_QakpMfD06HOhdc9AQN8gw/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "685 Hoosick Rd"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "685 Hoosick Rd", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/plum-blossom-chinese-restaurant-troy", 
+      "name": "Plum Blossom Chinese Restaurant", 
+      "phone": "5182720036", 
+      "rating": 3.5, 
+      "rating_img_url": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png", 
+      "rating_img_url_large": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png", 
+      "rating_img_url_small": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png", 
+      "review_count": 39, 
+      "snippet_image_url": "http://s3-media1.ak.yelpcdn.com/photo/FQISmSUpePMPI0sS6riMbg/ms.jpg", 
+      "snippet_text": "I really love Plum Blossom- it has a great atmosphere, the food is spectacular, and though it's a little pricier than most Chinese food, I really don't...", 
+      "url": "http://www.yelp.com/biz/plum-blossom-chinese-restaurant-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Greek", 
+          "greek"
+        ], 
+        [
+          "Mediterranean", 
+          "mediterranean"
+        ], 
+        [
+          "Turkish", 
+          "turkish"
+        ]
+      ], 
+      "display_phone": "+1-518-273-1170", 
+      "id": "ali-baba-troy", 
+      "image_url": "http://s3-media1.ak.yelpcdn.com/bphoto/0rGlezzt1HEC1XBo5xV7vg/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "2243 15th St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "2243 15th St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "menu_date_updated": 1378123952, 
+      "menu_provider": "singleplatform", 
+      "mobile_url": "http://m.yelp.com/biz/ali-baba-troy", 
+      "name": "Ali Baba", 
+      "phone": "5182731170", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 59, 
+      "snippet_image_url": "http://s3-media1.ak.yelpcdn.com/photo/V8viKRtMWPy-zzAnVhO3vw/ms.jpg", 
+      "snippet_text": "I have been going to Alli Baba for years. The large mixed platter is to die for. Their islander and urfa kabobs great and they make a great thin crust...", 
+      "url": "http://www.yelp.com/biz/ali-baba-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Japanese", 
+          "japanese"
+        ], 
+        [
+          "Sushi Bars", 
+          "sushi"
+        ]
+      ], 
+      "display_phone": "+1-518-326-5577", 
+      "id": "japanica-grill-troy", 
+      "image_url": "http://s3-media3.ak.yelpcdn.com/bphoto/DsoArX6xmezYUK0Gim4Npg/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "1521 Walter Uccellini 6th Ave"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "1521 Walter Uccellini 6th Ave", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/japanica-grill-troy", 
+      "name": "Japanica Grill", 
+      "phone": "5183265577", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 21, 
+      "snippet_image_url": "http://s3-media3.ak.yelpcdn.com/photo/ymSacsybad7mLtz6wocjhw/ms.jpg", 
+      "snippet_text": "Update review. \n\nI was going to take out curry chicken. After wait there for a while the waitress told me there is no curry today and then I decide to order...", 
+      "url": "http://www.yelp.com/biz/japanica-grill-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Caribbean", 
+          "caribbean"
+        ]
+      ], 
+      "display_phone": "+1-518-266-9050", 
+      "id": "first-choice-caribbean-american-troy", 
+      "image_url": "http://s3-media1.ak.yelpcdn.com/bphoto/76FN67bbqEHTXXz_WPygWA/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "451 Fulton St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "451 Fulton St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "menu_date_updated": 1378123951, 
+      "menu_provider": "single_platform", 
+      "mobile_url": "http://m.yelp.com/biz/first-choice-caribbean-american-troy", 
+      "name": "First Choice Caribbean American", 
+      "phone": "5182669050", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 16, 
+      "snippet_image_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/cc4afe21892e/default_avatars/user_medium_square.png", 
+      "snippet_text": "Fabulous, tasty. You can create a vegetarian plate of stew, collards and cabbage with a beautiful vegetable patty (for 1 meager dollar). Jamaican curry is...", 
+      "url": "http://www.yelp.com/biz/first-choice-caribbean-american-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Italian", 
+          "italian"
+        ]
+      ], 
+      "display_phone": "+1-518-235-8879", 
+      "id": "verdiles-restaurant-troy-3", 
+      "image_url": "http://s3-media2.ak.yelpcdn.com/bphoto/i6NWLJXaXU9vjLdP1pwi8g/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "572 Second Ave"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "572 Second Ave", 
+          "Troy, NY 12182"
+        ], 
+        "postal_code": "12182", 
+        "state_code": "NY"
+      }, 
+      "menu_date_updated": 1377811586, 
+      "menu_provider": "single_platform", 
+      "mobile_url": "http://m.yelp.com/biz/verdiles-restaurant-troy-3", 
+      "name": "Verdile's Restaurant", 
+      "phone": "5182358879", 
+      "rating": 3.5, 
+      "rating_img_url": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png", 
+      "rating_img_url_large": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png", 
+      "rating_img_url_small": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png", 
+      "review_count": 14, 
+      "snippet_image_url": "http://s3-media2.ak.yelpcdn.com/photo/dn4GGlf2R_SSqdexk4YX_Q/ms.jpg", 
+      "snippet_text": "I've been a customer here for over 20 years and I still love it.  As long as it's not dirty, I don't really care about decor too much, I care about food...", 
+      "url": "http://www.yelp.com/biz/verdiles-restaurant-troy-3"
+    }, 
+    {
+      "categories": [
+        [
+          "Barbeque", 
+          "bbq"
+        ]
+      ], 
+      "display_phone": "+1-518-308-0400", 
+      "id": "dinosaur-bar-b-que-troy", 
+      "image_url": "http://s3-media4.ak.yelpcdn.com/bphoto/GN3F1roFxfCN39EHJiXr3Q/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "377 River St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "377 River St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/dinosaur-bar-b-que-troy", 
+      "name": "Dinosaur Bar-B-Que", 
+      "phone": "5183080400", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 163, 
+      "snippet_image_url": "http://s3-media4.ak.yelpcdn.com/photo/BRQ9Vts8VxzEsHPU_W7Bmw/ms.jpg", 
+      "snippet_text": "I love Dinosaur BBQ.  No place around serves better pulled pork and I love their cornbread!  \n\nThe service is always fast and friendly, and the food is so...", 
+      "url": "http://www.yelp.com/biz/dinosaur-bar-b-que-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Greek", 
+          "greek"
+        ], 
+        [
+          "Ethnic Food", 
+          "ethnicmarkets"
+        ]
+      ], 
+      "display_phone": "+1-518-272-6058", 
+      "id": "the-greek-house-troy", 
+      "image_url": "http://s3-media1.ak.yelpcdn.com/bphoto/qS-HNQhYDkEgaY9CnIOBaQ/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "27 3rd St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "27 3rd St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/the-greek-house-troy", 
+      "name": "The Greek House", 
+      "phone": "5182726058", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 33, 
+      "snippet_image_url": "http://s3-media2.ak.yelpcdn.com/photo/BLJWW1Arg6xX5UFlYeBRsA/ms.jpg", 
+      "snippet_text": "Great Greek food. The staff makes you feel right at home. Actually you feel like you are eating in someone's home. The food is delicious and comforting. The...", 
+      "url": "http://www.yelp.com/biz/the-greek-house-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Asian Fusion", 
+          "asianfusion"
+        ], 
+        [
+          "Sushi Bars", 
+          "sushi"
+        ], 
+        [
+          "Barbeque", 
+          "bbq"
+        ], 
+        [
+          "Japanese", 
+          "japanese"
+        ], 
+        [
+          "Szechuan", 
+          "szechuan"
+        ]
+      ], 
+      "display_phone": "+1-518-272-8188", 
+      "id": "red-and-blue-troy", 
+      "image_url": "http://s3-media2.ak.yelpcdn.com/bphoto/V0uNAcUVDF7n9OkNv2Ee0g/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "2312 15th St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "2312 15th St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/red-and-blue-troy", 
+      "name": "Red & Blue", 
+      "phone": "5182728188", 
+      "rating": 3.0, 
+      "rating_img_url": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/34bc8086841c/ico/stars/v1/stars_3.png", 
+      "rating_img_url_large": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/e8b5b79d37ed/ico/stars/v1/stars_large_3.png", 
+      "rating_img_url_small": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/902abeed0983/ico/stars/v1/stars_small_3.png", 
+      "review_count": 20, 
+      "snippet_image_url": "http://s3-media2.ak.yelpcdn.com/photo/cRTKXX58IaxQXxrTKjZf5Q/ms.jpg", 
+      "snippet_text": "We always love red and blue food. It's our \"go to\" place if we want the best chinese food in Troy. It's not the cheapest but it is the best. I recommend...", 
+      "url": "http://www.yelp.com/biz/red-and-blue-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Pizza", 
+          "pizza"
+        ], 
+        [
+          "Italian", 
+          "italian"
+        ]
+      ], 
+      "display_phone": "+1-518-235-0444", 
+      "id": "testos-restaurant-and-pizza-troy", 
+      "image_url": "http://s3-media2.ak.yelpcdn.com/bphoto/9u5RyAmOwoJINnxLm3bpLg/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "853 4th Ave"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "853 4th Ave", 
+          "Troy, NY 12182"
+        ], 
+        "postal_code": "12182", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/testos-restaurant-and-pizza-troy", 
+      "name": "Testo's Restaurant & Pizza", 
+      "phone": "5182350444", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 19, 
+      "snippet_image_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/cc4afe21892e/default_avatars/user_medium_square.png", 
+      "snippet_text": "Love Testos!  Their dinners are amazing and comprised of very good portions, definitely getting your money's worth with them!  Orders are always ready on...", 
+      "url": "http://www.yelp.com/biz/testos-restaurant-and-pizza-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Latin American", 
+          "latin"
+        ]
+      ], 
+      "display_phone": "+1-518-272-3011", 
+      "id": "el-platano-restaurant-troy", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "198 1st St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "198 1st St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/el-platano-restaurant-troy", 
+      "name": "El Platano Restaurant", 
+      "phone": "5182723011", 
+      "rating": 5.0, 
+      "rating_img_url": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/f1def11e4e79/ico/stars/v1/stars_5.png", 
+      "rating_img_url_large": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/22affc4e6c38/ico/stars/v1/stars_large_5.png", 
+      "rating_img_url_small": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/c7623205d5cd/ico/stars/v1/stars_small_5.png", 
+      "review_count": 1, 
+      "snippet_image_url": "http://s3-media2.ak.yelpcdn.com/photo/eUSUB0vVOf9VjrpvxXaq2w/ms.jpg", 
+      "snippet_text": "El Platano closed down and was renovated by the original owner, Carmen. Similar menu, but even better! Carmen's is only open on the weekends, but go check...", 
+      "url": "http://www.yelp.com/biz/el-platano-restaurant-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Restaurants", 
+          "restaurants"
+        ], 
+        [
+          "Pubs", 
+          "pubs"
+        ]
+      ], 
+      "display_phone": "+1-518-274-7275", 
+      "id": "park-pub-restaurant-troy", 
+      "image_url": "http://s3-media2.ak.yelpcdn.com/bphoto/pxCG8olclPMDDPBhotAMnw/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "2701 Lavin Ct"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "2701 Lavin Ct", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/park-pub-restaurant-troy", 
+      "name": "Park Pub Restaurant", 
+      "phone": "5182747275", 
+      "rating": 4.0, 
+      "rating_img_url": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/c2f3dd9799a5/ico/stars/v1/stars_4.png", 
+      "rating_img_url_large": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/ccf2b76faa2c/ico/stars/v1/stars_large_4.png", 
+      "rating_img_url_small": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/f62a5be2f902/ico/stars/v1/stars_small_4.png", 
+      "review_count": 10, 
+      "snippet_image_url": "http://s3-media1.ak.yelpcdn.com/photo/z8w6EmnKNDMRNhXkgSbJ-A/ms.jpg", 
+      "snippet_text": "OLD RELIABLE.\n\nI swear, this place has the most consistent kitchen I've experienced in Troy. Every time, the food is perfectly prepared and very tasty.\n\nI...", 
+      "url": "http://www.yelp.com/biz/park-pub-restaurant-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Pizza", 
+          "pizza"
+        ]
+      ], 
+      "display_phone": "+1-518-687-0345", 
+      "id": "bacchus-troy", 
+      "image_url": "http://s3-media1.ak.yelpcdn.com/bphoto/TcOkF7pqlawVaaP3WMmGgg/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "33 2nd St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "33 2nd St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/bacchus-troy", 
+      "name": "Bacchus", 
+      "phone": "5186870345", 
+      "rating": 3.5, 
+      "rating_img_url": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png", 
+      "rating_img_url_large": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png", 
+      "rating_img_url_small": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png", 
+      "review_count": 42, 
+      "snippet_image_url": "http://s3-media2.ak.yelpcdn.com/photo/iay4hckUTqzAwo08NPa_2A/ms.jpg", 
+      "snippet_text": "This is a great lunch spot if you are in downtown Troy. They have a lunch buffet where you can order as many custom pizzas as you want for $7. I repeat: AS...", 
+      "url": "http://www.yelp.com/biz/bacchus-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Pizza", 
+          "pizza"
+        ], 
+        [
+          "Italian", 
+          "italian"
+        ]
+      ], 
+      "display_phone": "+1-518-271-1111", 
+      "id": "defazios-pizzeria-troy", 
+      "image_url": "http://s3-media2.ak.yelpcdn.com/bphoto/_vd-rQucMB1Iws0SckWQqg/ms.jpg", 
+      "is_claimed": true, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "266 4th St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "266 4th St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/defazios-pizzeria-troy", 
+      "name": "DeFazio's Pizzeria", 
+      "phone": "5182711111", 
+      "rating": 4.5, 
+      "rating_img_url": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png", 
+      "rating_img_url_large": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png", 
+      "rating_img_url_small": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png", 
+      "review_count": 74, 
+      "snippet_image_url": "http://s3-media3.ak.yelpcdn.com/photo/GsdM5wzokaa8H5XMmN4fKw/ms.jpg", 
+      "snippet_text": "This place is tiny....We showed up on a very busy Friday night and the manager moved people around so we could sit. This is a BYOB place and there were...", 
+      "url": "http://www.yelp.com/biz/defazios-pizzeria-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "American (Traditional)", 
+          "tradamerican"
+        ], 
+        [
+          "Pizza", 
+          "pizza"
+        ]
+      ], 
+      "display_phone": "+1-518-272-9241", 
+      "id": "red-front-restaurant-and-tavern-troy", 
+      "image_url": "http://s3-media3.ak.yelpcdn.com/bphoto/vBqoGMbSuy-QdHv7LHprcg/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "71 Division St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "71 Division St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "menu_date_updated": 1378131448, 
+      "menu_provider": "single_platform", 
+      "mobile_url": "http://m.yelp.com/biz/red-front-restaurant-and-tavern-troy", 
+      "name": "Red Front Restaurant & Tavern", 
+      "phone": "5182729241", 
+      "rating": 3.5, 
+      "rating_img_url": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png", 
+      "rating_img_url_large": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png", 
+      "rating_img_url_small": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png", 
+      "review_count": 26, 
+      "snippet_image_url": "http://s3-media4.ak.yelpcdn.com/photo/we4Q8VntNUEmyR35UrQZ1w/ms.jpg", 
+      "snippet_text": "I am from queens NY and am very picky about the pizza I eat...red fronts cob pizza in my opinion is the best in the area...which if you don't know what cob...", 
+      "url": "http://www.yelp.com/biz/red-front-restaurant-and-tavern-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Indian", 
+          "indpak"
+        ], 
+        [
+          "Pakistani", 
+          "pakistani"
+        ]
+      ], 
+      "display_phone": "+1-518-273-8744", 
+      "id": "shalimar-restaurant-troy", 
+      "image_url": "http://s3-media3.ak.yelpcdn.com/bphoto/hWlEUKE0TtW8M964lVCWKw/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "405 Fulton St"
+        ], 
+        "city": "Troy", 
+        "country_code": "US", 
+        "display_address": [
+          "405 Fulton St", 
+          "Troy, NY 12180"
+        ], 
+        "postal_code": "12180", 
+        "state_code": "NY"
+      }, 
+      "menu_date_updated": 1378123953, 
+      "menu_provider": "singleplatform", 
+      "mobile_url": "http://m.yelp.com/biz/shalimar-restaurant-troy", 
+      "name": "Shalimar Restaurant", 
+      "phone": "5182738744", 
+      "rating": 3.0, 
+      "rating_img_url": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/34bc8086841c/ico/stars/v1/stars_3.png", 
+      "rating_img_url_large": "http://s3-media1.ak.yelpcdn.com/assets/2/www/img/e8b5b79d37ed/ico/stars/v1/stars_large_3.png", 
+      "rating_img_url_small": "http://s3-media3.ak.yelpcdn.com/assets/2/www/img/902abeed0983/ico/stars/v1/stars_small_3.png", 
+      "review_count": 41, 
+      "snippet_image_url": "http://s3-media2.ak.yelpcdn.com/photo/7NbaextryFqrkByGBOKGUw/ms.jpg", 
+      "snippet_text": "I like to eat my words, particularly when it involves delicious Indian food.  I had not been to Shalimar in probably 8 years and that was because the last...", 
+      "url": "http://www.yelp.com/biz/shalimar-restaurant-troy"
+    }, 
+    {
+      "categories": [
+        [
+          "Indian", 
+          "indpak"
+        ]
+      ], 
+      "display_phone": "+1-518-785-7600", 
+      "id": "karavalli-latham", 
+      "image_url": "http://s3-media1.ak.yelpcdn.com/bphoto/BCiy3_x8QfAwMOAyFm-F3A/ms.jpg", 
+      "is_claimed": false, 
+      "is_closed": false, 
+      "location": {
+        "address": [
+          "9B Johnson Rd", 
+          "Rte 9R"
+        ], 
+        "city": "Latham", 
+        "country_code": "US", 
+        "display_address": [
+          "9B Johnson Rd", 
+          "Rte 9R", 
+          "Latham, NY 12110"
+        ], 
+        "postal_code": "12110", 
+        "state_code": "NY"
+      }, 
+      "mobile_url": "http://m.yelp.com/biz/karavalli-latham", 
+      "name": "Karavalli", 
+      "phone": "5187857600", 
+      "rating": 4.5, 
+      "rating_img_url": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png", 
+      "rating_img_url_large": "http://s3-media4.ak.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png", 
+      "rating_img_url_small": "http://s3-media2.ak.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png", 
+      "review_count": 102, 
+      "snippet_image_url": "http://s3-media1.ak.yelpcdn.com/photo/lRQWI98maVwL5i4bxMZALQ/ms.jpg", 
+      "snippet_text": "Karavalli is really good!  I consider myself reasonably knowledgeable, since I live in New Jersey and we eat a lot of Indian food.  I was very impressed...", 
+      "url": "http://www.yelp.com/biz/karavalli-latham"
+    }
+  ], 
+  "region": {
+    "center": {
+      "latitude": 42.75393755, 
+      "longitude": -73.69822082059325
+    }, 
+    "span": {
+      "latitude_delta": 0.0677365700000081, 
+      "longitude_delta": 0.10937480530515131
+    }
+  }, 
+  "total": 463
+}
