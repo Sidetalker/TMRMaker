@@ -1,43 +1,27 @@
+x,y st "when"(x), adverb(x), child(x,y) : tmr/hours?(y)
+
+// Everything below this is correctish.
 //Lexicon stuff (alphabetized by word)
-x,y st "a"(x), det(x), child(y,x): singular(y) // a dinner
-x st "anything"(x), n(x): tmr.phys-obj(x)
-x,y st "around"(x), p(x), child(x,y), n(y), tmr.restaurant(y): tmr.near(y), tmr/domain(y,y)
-x,y,z st "be"(x), child(x,y), child(x,z): tmr.relate(y), tmr/domain(y,y), tmr/range(y,z)
-x st "can"(x), m(x): tmr.modality(x), tmr/type["permissive"](x)
-x st "cook"(x), v(x): tmr.prepare(x)
-x st "dinner"(x), n(x), singular(x): tmr.meal(x), tmr/scope["evening"](x)
-x,y,z st "drive"(x), v(x), child(y,x), "to"(y), p(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/destination(x,z), tmr/instrument["car"](x)
-x,y,z st "drive"(x), v(x), child(y,x), "from"(y), p(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z), tmr/instrument["car"](x)
-x st "drive"(x), n(x): tmr.modality(x), tmr/type["effot"](x)
-x,y st "eat"(x), v(x), child(x,y), SUBJ(y): tmr.eat(x), tmr/agent(x,y)
-x st "father"(x): tmr.human(x), tmr/gender["male"](x) //my father
-x,y st "find"(x), v(x), child(x,y), SUBJ(y): tmr.look-for(x), tmr/agent(x,y) //I find
-x,y st "find"(x), v(x), child(x,y), DO(y): tmr.look-for(x), tmr/theme(x,y) // Find a place
-x st "food"(x), n(x): tmr.food(x)
-x st "friend"(x), n(x): tmr.human(x)
-x,y,z st "for"(x), p(x), n(y), child(x,y), v(z), child(z,x): tmr/scope(z,y) //find a place for dinner
-x,y,z st "get"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): tmr.set-ownership(x), tmr/agent(x,y), tmr/object(x,z)
-x,y,z st "go"(x), v(x), child(y,x), "to"(y), p(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z)
-x,y,z st "go"(x), v(x), child(y,x), "from"(y), p(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z)
-x,y,z st "have"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): tmr.set-ownership(x), tmr/agent(x,y), tmr/object(x,z)
+x,y st "a"(x), det(x), child(x,y) : singular(y)
+x st "dinner"(x), n(x),  singular(x) : tmr.dinner-event(x)
+x st "father"(x), n(x) : tmr.fatherperson(x)
+x st "find(x), v(x) : locate_action(x)
+x st "for"(x), prep(x) : specifier(x)
 x st "i"(x), pronoun(x) : tmr.human(x), tmr#user(x)
 x st "Joe's Pizza"(x) : tmr.restaurant(x), tmr/name["Joe's Pizza"](x)
-x,y st "my"(x), adj(x), child(y,x), n(y), tmr.object(y): possessive(y)
-x,y st "nice"(x), adj(x), child(x,y), tmr.human(y): tmr/kindness>.75(y) //the nice man
-x,y st "nice"(x), adj(x), child(x,y), tmr.object(y): tmr/niceness>.75(y) //a nice restaurant
-x,y st "open"(x), adj(x), child(x,y), n(y), tmr.restruant(y): tmr/status["true"](y) //The open place
+x st "my"(x), adj(x) : tmr.human(x), tmr#user(x), possessive(x)
+x,y st "nice"(x), adj(x), child(x,y) : tmr/niceness>0.75(y)
+x,y st "open"(x), adj(x) : tmr.open(x)
 x st "place"(x), n(x) : tmr.restaurant(x)
-x st "restaurant"(x), n(x): tmr.restaurant(x)
-x st "tomorrow"(x), adv(x) : tmr.time(x), tmr/date[today+1](x)
-x,y,z st "want"(x), v(x), child(x,y), SUBJ(y), child(x,z), DO(z) : tmr.modality(x), tmr/type["volitive"](x), tmr/value[1](x), tmr/scope(x,z), tmr/attribituted-to(x,y) // I want berries
-x,y,z st "with"(x), p(x), n(y), tmr.human(y), child(x,y), v(z), child(z,x): tmr.relate(z,y)// find dinner with my father
-
+x st "tomorrow"(x), adv(x) : tmr.date(x), tmr/value[today+1](x)
+x st "want"(x), v(x) : modality(x), tmr/type[volitive](x), tmr/value[1](x)
+x st "with"(x), prep(x) : joiner(x)
 
 //Ontology stuff
 x,y st tmr.human(x), adj(x), child(x,y) : tmr/inreferenceto(y,x)
 x,y,z st joiner(y), child(y,x), child(z,y) : tmr/participant+(x,z)
 x,y,z st specifier(y), child(y,x), child(z,y) : tmr/theme(x,z)
-x,y st locate_action(x), child(y,x), DO(y) : tmr/theme(x,y)
+x,y st locate_action(x), child(y,x), DO(y) : tmr/theme(x,y)bani
 x,y st tmr.human(x), pronoun(x), child(x,y) : tmr/participant(y,x)
 x st locate_action(x) : tmr/location?(x)
 x,y st tmr.restaurant(y), child(y,x), DO(y) : tmr/location(x,y)

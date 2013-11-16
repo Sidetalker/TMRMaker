@@ -1,7 +1,5 @@
 package knowledgeBase.syntax;
 
-import leia.parse.SentencePart;
-
 /**
  * Used to point to a specific tmr from the ontology.
  * 

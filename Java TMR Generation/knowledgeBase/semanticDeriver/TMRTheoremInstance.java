@@ -1,6 +1,5 @@
 package knowledgeBase.semanticDeriver;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -32,27 +31,27 @@ public class TMRTheoremInstance {
 		}
 	}
 
-	public void printProof(PrintStream output) {
+	public void printProof() {
 		ArrayList<TMRTheoremInstance> proof = new ArrayList<TMRTheoremInstance>();
 		contributeToProof(proof);
 		Hashtable<TMRTheoremInstance, Integer> reverseLookup = new Hashtable<TMRTheoremInstance, Integer>();
-		output.println("------------------------------------------------");
-		// if (proof.size() == 1) {
-		// return;
-		// }
+//		if (proof.size() == 1) {
+//			return;
+//		}
 		for (int i = 0; i < proof.size(); i++) {
 			reverseLookup.put(proof.get(i), i);
 		}
 		for (int i = 0; i < proof.size(); i++) {
-			output.print(i + ":" + proof.get(i).theorem.toString() + "|||||"
-					+ proof.get(i).application.toString() + "|||||||");
+			System.out.print(i + ":" + proof.get(i).theorem.toString()
+					+ "|||||" + proof.get(i).application + "|||||||");
 			for (int q = 0; q < proof.get(i).evidence.size(); q++) {
 				if (q > 0) {
-					output.print(",");
+					System.out.print(",");
 				}
-				output.print(reverseLookup.get(proof.get(i).evidence.get(q)));
+				System.out
+						.print(reverseLookup.get(proof.get(i).evidence.get(q)));
 			}
-			output.println();
+			System.out.println();
 		}
 	}
 }
