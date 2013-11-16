@@ -8,7 +8,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 
 import knowledgeBase.syntax.DependencyVariable;
-import knowledgeBase.syntax.SentencePart;
+import leia.parse.SentencePart;
 
 public class TMRTheorem {
 
@@ -36,6 +36,7 @@ public class TMRTheorem {
 	 * be true.
 	 */
 	HashSet<String>[] reverseKeyMappings;
+	String[] vars;
 	private static Hashtable<String, Integer> variableTable;
 
 	public String toString() {
@@ -113,12 +114,14 @@ public class TMRTheorem {
 		TMRTheorem ret = new TMRTheorem();
 		int suchThatIndex = string.indexOf("st");
 		String varString = string.substring(0, suchThatIndex);
-		String[] vars = varString.replace(" ", "").split(",");
+		ret.vars = varString.replace(" ", "").split(",");
+		// Add all the variables to a reverse-lookup table
 		variableTable = new Hashtable<String, Integer>();
-		for (int i = 0; i < vars.length; i++) {
-			variableTable.put(vars[i], i);
+		for (int i = 0; i < ret.vars.length; i++) {
+			variableTable.put(ret.vars[i], i);
 		}
-		ret.numParticipants = vars.length;
+		ret.numParticipants = ret.vars.length;
+		// Parse in all of the causes
 		ArrayList<String> causeStringList = StringHelper.splitOutOfGroupings(
 				string.substring(suchThatIndex + 2, string.indexOf(":")), ',');
 		ArrayList<SemanticFact> causes = new ArrayList<SemanticFact>();
@@ -127,6 +130,9 @@ public class TMRTheorem {
 					variableTable));
 		}
 		ret.causes = causes;
+		// Make sure all of the given variables were used.
+		checkCausesForVariableUsage(string, causes, ret.vars);
+		// Parse in all of the effects
 		ArrayList<String> effectStringList = StringHelper
 				.splitOutOfGroupings(
 						string.substring(string.indexOf(":") + 1,
@@ -138,6 +144,28 @@ public class TMRTheorem {
 		}
 		ret.effects = effects;
 		return ret;
+	}
+
+	private static void checkCausesForVariableUsage(String rule,
+			ArrayList<SemanticFact> causes, String[] vars) {
+		boolean[] found = new boolean[vars.length];
+		for (int i = 0; i < causes.size(); i++) {
+			for (int p = 0; p < causes.get(i).getNumParticipants(); p++) {
+				found[((DependencyVariable) causes.get(i).getParticipant(p))
+						.getIndex()] = true;
+			}
+		}
+		boolean unusedVar = false;
+		for (int i = 0; i < vars.length; i++) {
+			if (!found[i]) {
+				System.err.println("Unused variable " + vars[i] + " in rule "
+						+ rule);
+				unusedVar = true;
+			}
+		}
+		if (unusedVar) {
+			System.exit(0);
+		}
 	}
 
 	/**

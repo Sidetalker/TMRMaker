@@ -1,5 +1,6 @@
 package knowledgeBase.syntax;
 
+import leia.parse.SentencePart;
 import helpers.StringHelper;
 
 /**
@@ -10,25 +11,29 @@ import helpers.StringHelper;
  * modifiers:Array[SentencePart]) extends SentencePart
  * 
  * @author Dwight Naylor
+ * @deprecated
  */
 public class SyntaxDependency implements SentencePart {
 
-	public static final String DIRECT_OBJECT = "direct object";
+	private static final String DIRECT_OBJECT = "direct object";
+	private static final String SUBJECT = "subject";
 	private final String head;
 	private final String partOfSpeech;
-	private final SentencePart subject;
-	final SentencePart[] modifiers;
+	private final SentencePart[] modifiers;
 
 	public SyntaxDependency(String head, String partOfSpeech,
-			SentencePart subject, SentencePart[] modifiers) {
+			SentencePart[] modifiers) {
 		this.head = head;
 		this.partOfSpeech = partOfSpeech;
-		this.subject = subject;
 		this.modifiers = modifiers;
 	}
 
 	public boolean isDirectObject() {
 		return head.equals(DIRECT_OBJECT);
+	}
+
+	public boolean isSubject() {
+		return head.equals(SUBJECT);
 	}
 
 	public int getNumModifiers() {
@@ -48,7 +53,7 @@ public class SyntaxDependency implements SentencePart {
 			}
 			ret.append(modifiers[i]);
 		}
-		ret.append(", " + getSubject() + ">");
+		ret.append(">");
 		return ret.toString();
 	}
 
@@ -76,6 +81,37 @@ public class SyntaxDependency implements SentencePart {
 		System.out.println(ret);
 	}
 
+	public String getHead() {
+		return head;
+	}
+
+	public String getPartOfSpeech() {
+		return partOfSpeech;
+	}
+
+	public SentencePart getSubject() {
+		if (modifiers.length == 0) {
+			return null;
+		}
+		if (!(modifiers[modifiers.length - 1] instanceof SyntaxDependency)
+				|| !((SyntaxDependency) modifiers[modifiers.length - 1])
+						.isSubject()) {
+			return null;
+		}
+		return modifiers[modifiers.length - 1];
+	}
+
+	public SentencePart getDirectObject() {
+		if (modifiers.length == 0) {
+			return null;
+		}
+		if (!(modifiers[0] instanceof SyntaxDependency)
+				|| !((SyntaxDependency) modifiers[0]).isDirectObject()) {
+			return null;
+		}
+		return modifiers[0];
+	}
+
 	public static SyntaxDependency parse(String s) {
 		if (s == null || s.equals("null")) {
 			return null;
@@ -90,23 +126,15 @@ public class SyntaxDependency implements SentencePart {
 		String pos = s.substring(s.indexOf("|") + 1, firstComma);
 		String[] modifierStrings = StringHelper.splitOutOfArrows(
 				s.substring(firstComma + 1, s.length() - 1), ',');
-		SyntaxDependency[] modifiers = new SyntaxDependency[modifierStrings.length - 1];
+		SyntaxDependency[] modifiers = new SyntaxDependency[modifierStrings.length];
 		for (int i = 0; i < modifiers.length; i++) {
 			modifiers[i] = parse(modifierStrings[i]);
 		}
-		return new SyntaxDependency(head, pos,
-				parse(modifierStrings[modifiers.length]), modifiers);
+		return new SyntaxDependency(head, pos, modifiers);
 	}
 
-	public String getHead() {
-		return head;
-	}
-
-	public String getPartOfSpeech() {
-		return partOfSpeech;
-	}
-
-	public SentencePart getSubject() {
-		return subject;
+	public static void main(String[] args) {
+		System.out
+				.println(parse("<QUESTION|role, <go|v, <to|prep, <Joe's Pizza|n, >>, <SUBJECT|role,<I|n, >>, <should|m, >>>"));
 	}
 }
