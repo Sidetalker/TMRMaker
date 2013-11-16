@@ -1,32 +1,50 @@
 package knowledgeBase.semanticDeriver;
 
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 
+import leia.parse.SentencePart;
+
 public class TMR {
 
-	public static final Hashtable<String, Integer> indices = new Hashtable<String, Integer>();
-	final String identifier;
+	public static Hashtable<String, Integer> indices = new Hashtable<String, Integer>();
+	private String identifier;
 
 	/**
 	 * The properties for this tmr instance. The string
 	 * <code>UNSET_STRING</code> means that it is unset.
 	 */
 	public final Hashtable<String, Object> properties = new Hashtable<String, Object>();
-	private String questionString;
-	final int index;
+	private final HashSet<String> legalProperties = new HashSet<String>();
+	int index;
+	private String markedProperty;
 
-	public TMR(String identifier) {
+	public TMR(Deriver deriver, String identifier) {
 		this.identifier = identifier;
 		if (!indices.containsKey(identifier)) {
 			indices.put(identifier, 0);
 		}
 		index = indices.get(identifier);
 		indices.put(identifier, index + 1);
+		@SuppressWarnings("unchecked")
+		Iterator<String> propertyIterator = deriver.getTMRType(identifier)
+				.keySet().iterator();
+		while (propertyIterator.hasNext()) {
+			legalProperties.add(propertyIterator.next());
+		}
+	}
+
+	public void changeTMRType(String newType) {
+		this.identifier = newType;
+		if (!indices.containsKey(identifier)) {
+			indices.put(identifier, 0);
+		}
+		index = indices.get(identifier);
 	}
 
 	public String toString() {
-		return identifier.toUpperCase() + "-" + index;
+		return getIdentifier().toUpperCase() + "-" + index;
 	}
 
 	public void print() {
@@ -34,15 +52,24 @@ public class TMR {
 		Iterator<String> iterator = properties.keySet().iterator();
 		while (iterator.hasNext()) {
 			String key = iterator.next();
-			if (key.equals(questionString)) {
-				System.out.print("?????");
-			}
 			System.out.println("\t" + key + " : " + properties.get(key));
 		}
 		System.out.println();
 	}
 
-	public void addQuestionMark(String key) {
+	public void setMarker(String propToMark) {
+		this.markedProperty = propToMark;
+	}
 
+	public void clearMarker(SentencePart markerValue) {
+		properties.put(markedProperty, markerValue);
+	}
+
+	public boolean isLegalProperty(String property) {
+		return legalProperties.contains(property);
+	}
+
+	public String getIdentifier() {
+		return identifier;
 	}
 }
