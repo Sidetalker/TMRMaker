@@ -19,10 +19,13 @@ import knowledgeBase.ontology.TMRPropertySetter;
 import knowledgeBase.ontology.TMRPropertySetter.SetterType;
 import knowledgeBase.syntax.DependencyVariable;
 import knowledgeBase.syntax.TMRReference;
+
 import leia.parse.Dependency;
 import leia.parse.DependencyParse;
 import leia.parse.SentencePart;
 import leia.parse.Time;
+
+import output.Processor;
 
 public class Deriver {
 
@@ -487,5 +490,16 @@ public class Deriver {
 			deriver.resetTMRs();
 		}
 		deriver.outputTMRs();
+
+        System.out.println("DEREK INFO BEGIN");
+
+        Processor processorTMR = new Processor();
+
+        if (!processorTMR.feedTMR(tmrList.get(0)))
+        {
+            System.out.println("Error: Could not process TMR");
+        }
+
+        System.out.println(processorTMR.getResult());
 	}
 }
