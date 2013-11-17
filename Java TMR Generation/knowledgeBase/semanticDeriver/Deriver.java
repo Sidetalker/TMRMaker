@@ -235,8 +235,9 @@ public class Deriver {
 		if (!tmrs.containsKey(part)) {
 			if (part instanceof TMRReference) {
 				tmrs.put(part, new TMR(this, ((TMRReference) part).getTmrKey()));
+			} else {
+				return null;
 			}
-			return null;
 		}
 		return tmrs.get(part);
 	}
@@ -436,9 +437,13 @@ public class Deriver {
 	 */
 	public boolean inherits(String tmrType1, String tmrType2,
 			HashSet<String> exclude) {
-		if (!this.legalTMRTypes.contains(tmrType1)
-				|| !this.legalTMRTypes.contains(tmrType2)) {
+		System.out.println(legalTMRTypes);
+		if (!this.legalTMRTypes.containsKey(tmrType1)
+				|| !this.legalTMRTypes.containsKey(tmrType2)) {
 			return false;
+		}
+		if (tmrType1.equals(tmrType2)) {
+			return true;
 		}
 		if (!legalTMRTypes.get(tmrType2).containsKey("inherits")) {
 			return false;
@@ -448,13 +453,11 @@ public class Deriver {
 				tmrType1).get("inherits")).keySet().iterator();
 		while (inheritanceIterator.hasNext()) {
 			String currentInheritor = inheritanceIterator.next();
-			if (currentInheritor.equals(tmrType1)) {
-				return true;
-			}
 			if (!exclude.contains(currentInheritor)) {
 				if (inherits(tmrType1, currentInheritor)) {
 					return true;
 				}
+				exclude.add(currentInheritor);
 			}
 		}
 		return false;
@@ -464,7 +467,7 @@ public class Deriver {
 		// Scanner scanner = new Scanner(System.in);
 		// String sentence = scanner.next();
 		// scanner.close();
-		String sentence = "What is a nice place for dinner?";
+		String sentence = "I want to find a nice place for a dinner with my father tomorrow at 7 pm.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
