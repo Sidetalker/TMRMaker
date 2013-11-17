@@ -464,7 +464,7 @@ public class Deriver {
 		// Scanner scanner = new Scanner(System.in);
 		// String sentence = scanner.next();
 		// scanner.close();
-		String sentence = "What is a nice place for dinner?";
+		String sentence = "When is Joe's Pizza open.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
