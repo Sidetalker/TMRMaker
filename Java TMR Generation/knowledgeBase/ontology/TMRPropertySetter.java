@@ -127,7 +127,10 @@ public class TMRPropertySetter {
 				} else {
 					System.err
 							.println("Multiple conflicting tmr assignments made to same object");
-					// TODO: Flesh out this error message better.
+					System.err
+							.println("Object :" + getFact().getParticipant(0));
+					System.err.println(oldTMR.getIdentifier()
+							+ " conflicts with " + tmrType);
 					System.exit(0);
 				}
 			} else {
@@ -192,12 +195,7 @@ public class TMRPropertySetter {
 	public boolean canExecute(Deriver deriver) {
 		String factType = getFact().getType();
 		if (deriver.getTMR(getFact().getParticipant(0)) == null) {
-			System.err.println("Illegal tmr modification done for:"
-					+ getFact().getParticipant(0));
-			System.err.println("Modification :" + fact);
-			System.err.println("Proof :");
-			fact.getDerivation().printProof(System.err);
-			System.exit(0);
+			return false;
 		}
 		if (getType() == SetterType.SETTING_TMR) {
 			return deriver.getTMR(getFact().getParticipant(0)).isLegalProperty(
