@@ -47,6 +47,11 @@ public class TMRPropertySetter {
 		 * Settings of the form tmr/prop?
 		 */
 		MARKER,
+		/**
+		 * Marking a given fact as the thing we want to find.<br>
+		 * ?tmr/prop(x)FIXME: Doens't work yet.
+		 */
+		GOALFACT
 	}
 
 	final private SemanticFact fact;
@@ -64,14 +69,16 @@ public class TMRPropertySetter {
 					|| typeString.contains("=")) {
 				setterType = SetterType.ASSIGNMENT;
 			} else if (typeString.endsWith(".?")) {
-				setterType = SetterType.MARKER;
-			} else if (typeString.contains("?")) {
 				setterType = SetterType.DEMARKER;
+			} else if (typeString.contains("?")) {
+				setterType = SetterType.MARKER;
 			} else if (typeString.contains("+")) {
 				setterType = SetterType.ADDER;
 			} else {
 				setterType = SetterType.SETTING_TMR;
 			}
+		} else if (typeString.startsWith("?tmr/")) {
+			setterType = SetterType.GOALFACT;
 		} else {
 			setterType = SetterType.CREATION;
 		}
@@ -97,7 +104,8 @@ public class TMRPropertySetter {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void execute(Deriver deriver) {
+	public int execute(Deriver deriver) {
+		int ret = 0;
 		String factType = getFact().getType();
 		if (getType() == SetterType.REFERENCE) {
 			String reference = factType.substring(factType.indexOf("#") + 1,
@@ -110,6 +118,12 @@ public class TMRPropertySetter {
 		if (getType() == SetterType.CREATION) {
 			String tmrType = factType.substring(factType.indexOf('.') + 1,
 					factType.length());
+			String tmrTypeForInheritanceCount = tmrType;
+			while (deriver.getTMRType(tmrTypeForInheritanceCount) != null) {
+				tmrTypeForInheritanceCount = (String) deriver.getTMRType(
+						tmrTypeForInheritanceCount).get("inherits");
+				ret++;
+			}
 			if (deriver.containsTMR(getFact().getParticipant(0))) {
 				TMR oldTMR = deriver.getTMR(getFact().getParticipant(0));
 				String oldTMRType = oldTMR.getIdentifier();
@@ -190,11 +204,22 @@ public class TMRPropertySetter {
 					type.substring(type.indexOf('/') + 1, type.indexOf('[')),
 					type.substring(type.indexOf('[') + 1, type.length() - 1));
 		}
+		if (getType() == SetterType.GOALFACT) {
+			deriver.getTMR(getFact().getParticipant(0)).setGoalFact(
+					factType.substring(factType.indexOf('/') + 1,
+							factType.length()));
+		}
+		return ret;
 	}
 
 	public boolean canExecute(Deriver deriver) {
 		String factType = getFact().getType();
 		if (deriver.getTMR(getFact().getParticipant(0)) == null) {
+			return false;
+		}
+		if (getFact().getNumParticipants() > 1
+				&& deriver.getTMR(getFact().getParticipant(1)) == null
+				&& getType() != SetterType.SETTING_VALUE) {
 			return false;
 		}
 		if (getType() == SetterType.SETTING_TMR) {
@@ -225,6 +250,11 @@ public class TMRPropertySetter {
 			return deriver.getTMR(getFact().getParticipant(0)).isLegalProperty(
 					factType.substring(factType.indexOf('/') + 1,
 							factType.indexOf('[')));
+		}
+		if (getType() == SetterType.GOALFACT) {
+			return deriver.getTMR(getFact().getParticipant(0)).isLegalProperty(
+					factType.substring(factType.indexOf('/') + 1,
+							factType.length()));
 		}
 		return false;
 	}

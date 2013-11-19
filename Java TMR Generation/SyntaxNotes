@@ -12,6 +12,7 @@ p (preposition)
 qs (question starter: "WHEN can I eat"; THIS WILL LIKELY CHANGE)
 
 role (is always one of:)
+		BENEFICIARY (BEN)
         SUBJECT (SUBJ)
         DIRECT OBJECT (DO)
         LINKED ADJECTIVE (LA)
@@ -20,6 +21,7 @@ role (is always one of:)
         WHAT FOR (WHAT)
         PLURAL (PLURAL)
         PAST (PAST)
+        QUESTION (QUESTION)
 
 [the tough ones:]
 cc (coordinating conjunction: "I eat AND I'm sad")
