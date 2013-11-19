@@ -2,4 +2,7 @@ TMRMaker.iml
 .classpath
 .project
 .idea*
-out/production/*
+Java TMR Generation/out/*
+
+
+*.iml

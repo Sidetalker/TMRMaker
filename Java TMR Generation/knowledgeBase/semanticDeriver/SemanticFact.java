@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 import knowledgeBase.syntax.DependencyVariable;
-import knowledgeBase.syntax.SentencePart;
+import leia.parse.SentencePart;
 
 /**
  * A class representing a single "fact" about a syntax tree as it is parsed into
@@ -16,8 +16,6 @@ import knowledgeBase.syntax.SentencePart;
  * child(x,y) is a fact representing that x is a child of y<br>
  * "&lttext&gt"(x) is for a tree x with &lttext&gt as its word<br>
  * &lttext&gt(x) is for a tree x with &lttext&gt as its POS<br>
- * 
- * TODO: Put tmr referencing strategies here.
  * 
  * @author Dwight Naylor
  */
@@ -37,6 +35,9 @@ public class SemanticFact {
 	}
 
 	public SemanticFact(String type, ArrayList<SentencePart> participants) {
+		if (type.startsWith("\"") && type.endsWith("\"")) {
+			type = type.toLowerCase();
+		}
 		this.type = type;
 		this.participants = participants;
 	}
@@ -87,6 +88,11 @@ public class SemanticFact {
 		for (int i = 0; i < input.length; i++) {
 			if (input[i].charAt(0) == '\"'
 					&& input[i].charAt(input[i].length() - 1) == '\"') {
+				if (variableTable.get(input[i]) == null) {
+					System.err.println("Variable " + input[i]
+							+ " was not recognized in theorem " + string);
+					System.exit(0);
+				}
 				participants.add(new DependencyVariable(variableTable
 						.get(input[i])));
 			} else {

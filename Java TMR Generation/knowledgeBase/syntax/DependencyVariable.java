@@ -1,5 +1,7 @@
 package knowledgeBase.syntax;
 
+import leia.parse.SentencePart;
+
 /**
  * The variables used to represent (internally) the different sentenceparts
  * represented in a theorem. For example, child(x,y) has two dependency
