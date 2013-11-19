@@ -11,8 +11,6 @@ import java.util.Iterator;
 
 public class Processor
 {
-    public String
-
     public void test()
     {
         // Create a hash map
@@ -44,14 +42,14 @@ public class Processor
         Enumeration<SentencePart> test = providedTMR.keys();
         while(test.hasMoreElements()) {
             SentencePart str = test.nextElement();
-            System.out.println(str + "ASD");
+            //System.out.println(str + "ASD");
         }
 
         while (iterator.hasNext()) {
             TMR next = iterator.next();
             if (!printed.contains(next))
             {
-                next.print();
+                //next.print();
             }
         }
         return true;
@@ -59,13 +57,20 @@ public class Processor
 
     public String getResult()
     {
-        JSONObject obj=new JSONObject();
+
+
+        JSONObject restaurants;
+        restaurants.put("FOUND");
+
+        JSONObject obj = new JSONObject();
         obj.put("LOOK-FOR-0","foo");
         obj.put("MEAL-0",new Integer(100));
         obj.put("balance",new Double(1000.21));
         obj.put("is_vip",new Boolean(true));
         obj.put("nickname",null);
         System.out.print(obj);
+
+        return obj.toJSONString();
     }
 }
 
