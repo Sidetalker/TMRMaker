@@ -100,8 +100,36 @@ public class SemanticFact {
 						.get(input[i])));
 			}
 		}
-		return new SemanticFact(new TMRTheoremInstance(), string.substring(0,
-				string.indexOf('(')).replace(" ", ""), participants);
+		String theorem = deleteOutOfBrackets(
+				string.substring(0, string.indexOf('(')), ' ');
+		return new SemanticFact(new TMRTheoremInstance(), theorem, participants);
+	}
+
+	private static String deleteOutOfBrackets(String string, char find) {
+		StringBuffer ret = new StringBuffer(string);
+		int bracketDepth = 0;
+		boolean inQuotes = false;
+		for (int i = 0; i < string.length(); i++) {
+			char cur = string.charAt(i);
+			if (cur == '\"') {
+				inQuotes = !inQuotes;
+			}
+			if (cur == '[') {
+				bracketDepth++;
+			} else if (cur == ']') {
+				bracketDepth--;
+			}
+			if (bracketDepth == 0 && !inQuotes) {
+				if (Character.isUpperCase(cur)) {
+					ret.deleteCharAt(i);
+					ret.insert(i, Character.toLowerCase(cur));
+				}
+				if (cur == find) {
+					ret.deleteCharAt(i);
+				}
+			}
+		}
+		return ret.toString();
 	}
 
 	public TMRTheoremInstance getDerivation() {

@@ -1,3 +1,4 @@
+
 {
 	"MODALITY":{
 		"inherits":"",
@@ -9,10 +10,12 @@
 
 	"TIME":{
 		"inherits":"",
-		"date":"",
+		"month":0,
+		"dayOfMonth":0,
+		"dayOfWeek":0,
 		"hour":0, //0-23
 		"minute":0, //0-59
-		"second":0 //0-59
+		"pm":0 //0-59
 	},
 
 	"HUMAN":{
@@ -34,6 +37,10 @@
 		"work-address":"", //LOCATION
 		"work-schedule":[""], //list of TIME
 		"current-location":[0,0]
+	},
+
+	"CATEGORY":{
+		"type":""
 	},
 
 	"OBJ":{
@@ -70,8 +77,10 @@
 	},
 
 	"EVENT":{
-		"agent":"",
-		"theme":"",
+		"agent":"", // who is agent of this event
+		"theme":"", // what is the event interacting with
+		"scope":"", // what limiting information is included with this event
+		"beneficiary":[""], // who is included in this event?
 		"time-of":"TIME"
 	},
 
@@ -83,12 +92,12 @@
 
 	"REQUEST-INFO":{
 		"inherits":"EVENT",
-		"scope":""
+		"scope":"",
+		"type":""
 	},
 
 	"LOOK-FOR":{ // may consider removing this entry as it is just a specification of request-info
-		"inherits":"REQUEST-INFO",
-		"scope":"EVENT" //why are we looking? expected EVENT
+		"inherits":"EVENT"
 	},
 
 	"PREPARE":{
@@ -144,5 +153,15 @@
 	"RELATE":{ //relational base. Used for be.
 		"domain":"",
 		"range":""
+	},
+
+	"REASON-OF":{
+		"domain":"",
+		"range":""
+	},
+
+	"SPECIFY-TIME":{
+		"theme":"",
+		"time":""
 	}
 }
