@@ -244,7 +244,12 @@ public class TMRPropertySetter {
 		}
 		if (getType() == SetterType.ASSIGNMENT) {
 			return deriver.getTMR(getFact().getParticipant(0)).isLegalProperty(
-					factType.substring(factType.indexOf('/') + 1));
+					factType.substring(
+							factType.indexOf('/') + 1,
+							Math.max(
+									factType.indexOf('='),
+									Math.max(factType.indexOf('<'),
+											factType.indexOf('>')))));
 		}
 		if (getType() == SetterType.SETTING_VALUE) {
 			return deriver.getTMR(getFact().getParticipant(0)).isLegalProperty(

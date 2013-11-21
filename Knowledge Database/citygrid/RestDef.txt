@@ -25,6 +25,53 @@ cat_matching
 	match_id
 	rest_id
 	cat_id
+
+social_circle
+	circle_id
+	human_id
+	friend_id
+
+pref_cuisine
+	taste_id
+	human_id
+	cat_id
+
+kin
+	kin_id
+	human_id
+	relative_id
+	kin_relation
+
+possessions
+	possession_id
+	human_id
+	possession_name
+
+rest_history
+	history_id
+	human_id
+	rest_id
+	rating
+
+schedule
+	schedule_id
+	is_human
+	rest_id
+	human_id
+	dow
+	start_time
+	end_time
+
+human
+	human_id
+	name
+	gender
+	age
+	mood
+	kindess
+	home_addr
+	work_addr
+
 --------------------------------------------------
 
 Restaurant (Full)

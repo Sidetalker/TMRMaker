@@ -9,6 +9,7 @@ url_params['type'] = 'restaurant'
 url_params['where'] = 'Troy,NY'
 url_params['publisher'] = 'test'
 url_params['format'] = 'json'
+url_params['page'] = '2'
 url_params['rpp'] = '50'
 
 host = 'api.citygridmedia.com/content/places/v2'

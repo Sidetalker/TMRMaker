@@ -28,7 +28,7 @@ x,y,z st "like"(x), v(x), child(y,x), tmr.human(y), child(z,x), tmr.category(z):
 x st "mexican"(x), n(x): tmr.category(x), tmr/type["mexican"](x)
 x,y st "my"(x), adj(x), child(y,x), n(y): possessive(y)
 x,y st "nice"(x), adj(x), child(x,y), tmr.human(y): tmr/kindness[.75](y) //the nice man
-x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/niceness[.75](y) //a nice restaurant
+x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/rating[1](y), tmr/niceness>0.75(y) //a nice restaurant
 x,y st "open"(x), adj(x), child(x,y), n(y), tmr.restruant(y): tmr/status["true"](y) //The open place
 x st "place"(x), n(x) : tmr.restaurant(x)
 x st "restaurant"(x), n(x): tmr.restaurant(x)
