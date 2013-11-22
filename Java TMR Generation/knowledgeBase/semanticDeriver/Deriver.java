@@ -19,13 +19,10 @@ import knowledgeBase.ontology.TMRPropertySetter;
 import knowledgeBase.ontology.TMRPropertySetter.SetterType;
 import knowledgeBase.syntax.DependencyVariable;
 import knowledgeBase.syntax.TMRReference;
-
 import leia.parse.Dependency;
 import leia.parse.DependencyParse;
 import leia.parse.SentencePart;
 import leia.parse.Time;
-
-import output.Processor;
 
 public class Deriver {
 
@@ -55,6 +52,7 @@ public class Deriver {
 	}
 
 	private void addNewTheorem(String theorem) {
+		theorem = theorem.toLowerCase();
 		TMRTheorem newTheorem = TMRTheorem.parse(theorem);
 		ArrayList<String> factsNeeded = newTheorem.getFactsNeeded();
 		for (int i = 0; i < factsNeeded.size(); i++) {
@@ -88,29 +86,32 @@ public class Deriver {
 			Dependency tree = (Dependency) part;
 			// Add the head fact
 			String head = tree.head();
-			if (isSubject((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("SUBJ",
+			if (isBeneficiary((Dependency) tree)) {
+				expandOn(new TMRTheoremInstance(new SemanticFact("ben",
+						tree.modifiers()[0])));
+			} else if (isSubject((Dependency) tree)) {
+				expandOn(new TMRTheoremInstance(new SemanticFact("subj",
 						tree.modifiers()[0])));
 			} else if (isDirectObject(tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("DO",
+				expandOn(new TMRTheoremInstance(new SemanticFact("do",
 						tree.modifiers()[0])));
 			} else if (isLinkedAdjective((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("LA",
+				expandOn(new TMRTheoremInstance(new SemanticFact("la",
 						tree.modifiers()[0])));
 			} else if (isQuestion((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("QUES",
+				expandOn(new TMRTheoremInstance(new SemanticFact("ques",
 						tree.modifiers()[0])));
 			} else if (isCommand((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("COMM",
+				expandOn(new TMRTheoremInstance(new SemanticFact("comm",
 						tree.modifiers()[0])));
 			} else if (isWhatFor((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("WHAT",
+				expandOn(new TMRTheoremInstance(new SemanticFact("what",
 						tree.modifiers()[0])));
 			} else if (isPlural((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("PLURAL",
+				expandOn(new TMRTheoremInstance(new SemanticFact("plural",
 						tree.modifiers()[0])));
 			} else if (isPast((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("PAST",
+				expandOn(new TMRTheoremInstance(new SemanticFact("past",
 						tree.modifiers()[0])));
 			} else {
 				expandOn(new TMRTheoremInstance(new SemanticFact("\""
@@ -134,6 +135,10 @@ public class Deriver {
 				}
 			}
 		}
+	}
+
+	private boolean isBeneficiary(Dependency d) {
+		return d.head().equals("BENEFICIARY");
 	}
 
 	private boolean isRole(Dependency dependency) {
@@ -266,7 +271,16 @@ public class Deriver {
 			if (!possibleTMRs.containsKey(part)) {
 				possibleTMRs.put(part, new ArrayList<TMRPropertySetter>());
 			}
-			possibleTMRs.get(part).add(tmrCreators.get(i));
+			boolean found = false;
+			for (int q = 0; q < possibleTMRs.get(part).size(); q++) {
+				if (possibleTMRs.get(part).get(q).toString()
+						.equals(tmrCreators.get(i).toString())) {
+					found = true;
+				}
+			}
+			if (!found) {
+				possibleTMRs.get(part).add(tmrCreators.get(i));
+			}
 		}
 		// The final list is a list of lists, where each child list is the
 		// possible candidates for a given sentencepart.
@@ -360,16 +374,17 @@ public class Deriver {
 	}
 
 	private int assembleTMRs(ArrayList<TMRPropertySetter> tmrCreators) {
+		int succesfulApplications = 0;
 		// FIXME: Resolve reference errors beforehand.
 		ArrayList<TMRPropertySetter> referenceList = TMRPropertySetter.setterLists
 				.get(TMRPropertySetter.SetterType.REFERENCE);
 		for (int i = 0; i < referenceList.size(); i++) {
 			referenceList.get(i).execute(this);
+			succesfulApplications++;
 		}
 		for (int i = 0; i < tmrCreators.size(); i++) {
-			tmrCreators.get(i).execute(this);
+			succesfulApplications += tmrCreators.get(i).execute(this);
 		}
-		int succesfulApplications = 0;
 		SetterType[] setterTypes = TMRPropertySetter.SetterType.values();
 		for (int i = 0; i < setterTypes.length; i++) {
 			SetterType cur = setterTypes[i];
@@ -388,6 +403,7 @@ public class Deriver {
 		return succesfulApplications;
 	}
 
+	@SuppressWarnings("unchecked")
 	private void addOntology(String file) {
 		StringBuffer fullText = new StringBuffer();
 		try {
@@ -408,7 +424,6 @@ public class Deriver {
 		}
 
 		JSONObject parse = (JSONObject) JSONValue.parse(fullText.toString());
-		@SuppressWarnings("unchecked")
 		Iterator<String> tmrTypeIterator = parse.keySet().iterator();
 		while (tmrTypeIterator.hasNext()) {
 			String key = tmrTypeIterator.next();
@@ -420,9 +435,31 @@ public class Deriver {
 						+ newTMRType.get("inherits") + "(x)");
 			}
 		}
+		// Pass all inherited properties up.
+		Iterator<Entry<String, JSONObject>> tmrIterator = legalTMRTypes
+				.entrySet().iterator();
+		while (tmrIterator.hasNext()) {
+			Entry<String, JSONObject> curTMREntry = tmrIterator.next();
+			JSONObject curTMR = curTMREntry.getValue();
+			while (curTMR.containsKey("inherits")
+					&& !curTMR.get("inherits").equals("")) {
+				curTMR = legalTMRTypes.get(((String) curTMR.get("inherits"))
+						.toLowerCase());
+				Iterator<String> parentIterator = curTMR.keySet().iterator();
+				while (parentIterator.hasNext()) {
+					String curKey = parentIterator.next();
+					if (!curTMREntry.getValue().containsKey(curKey)) {
+						curTMREntry.getValue().put(curKey, curTMR.get(curKey));
+					}
+				}
+			}
+		}
 	}
 
 	public JSONObject getTMRType(String identifier) {
+		if (identifier == null || identifier.length() == 0) {
+			return null;
+		}
 		return this.legalTMRTypes.get(identifier.toLowerCase());
 	}
 
@@ -440,7 +477,6 @@ public class Deriver {
 	 */
 	public boolean inherits(String tmrType1, String tmrType2,
 			HashSet<String> exclude) {
-		System.out.println(legalTMRTypes);
 		if (!this.legalTMRTypes.containsKey(tmrType1)
 				|| !this.legalTMRTypes.containsKey(tmrType2)) {
 			return false;
@@ -466,11 +502,18 @@ public class Deriver {
 		return false;
 	}
 
+	private final static boolean showAllTMRS = false;
+
 	public static void main(String[] args) {
 		// Scanner scanner = new Scanner(System.in);
 		// String sentence = scanner.next();
 		// scanner.close();
+		// String sentence = "When is Joe's Pizza open?";
 		String sentence = "I want to find a nice place for a dinner with my father tomorrow at 7 pm.";
+		// String sentence = "I like Mexican.";
+		// String sentence = "What is open tonight?";
+		// String sentence =
+		// "Could you give me a place I could eat at sometime?";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
@@ -481,25 +524,47 @@ public class Deriver {
 		Iterator<ArrayList<TMRPropertySetter>> interpretationList = deriver
 				.generateTMRInterpretations();
 		ArrayList<Hashtable<SentencePart, TMR>> tmrList = new ArrayList<Hashtable<SentencePart, TMR>>();
+		int bestTMRIndex = -1;
+		int bestNum = -1;
 		while (interpretationList.hasNext()) {
-			System.out
-					.println("====================================================================");
-			deriver.assembleTMRs(interpretationList.next());
+			if (showAllTMRS) {
+				System.out
+						.println("====================================================================");
+			}
+			int numTMRAssignmentsUsed = deriver.assembleTMRs(interpretationList
+					.next());
+			if (numTMRAssignmentsUsed > bestNum) {
+				bestTMRIndex = tmrList.size();
+				bestNum = numTMRAssignmentsUsed;
+			}
 			tmrList.add(deriver.tmrs);
-			deriver.outputTMRs();
+			if (showAllTMRS) {
+				System.out.println(numTMRAssignmentsUsed);
+				deriver.outputTMRs();
+			}
 			deriver.resetTMRs();
 		}
+
 		deriver.outputTMRs();
 
-        System.out.println("DEREK INFO BEGIN");
-
-        Processor processorTMR = new Processor();
-
-        if (!processorTMR.feedTMR(tmrList.get(0)))
-        {
-            System.out.println("Error: Could not process TMR");
-        }
-
-        System.out.println(processorTMR.getResult());
+//        System.out.println("DEREK INFO BEGIN");
+//
+//        Processor processorTMR = new Processor();
+//
+//        if (!processorTMR.feedTMR(tmrList.get(0)))
+//        {
+//            System.out.println("Error: Could not process TMR");
+//        }
+//
+//        System.out.println(processorTMR.getResult());
+		if (!showAllTMRS) {
+			System.out
+					.println("====================================================================");
+			System.out.println(bestNum);
+			if (bestTMRIndex != -1) {
+				deriver.tmrs = tmrList.get(bestTMRIndex);
+				deriver.outputTMRs();
+			}
+		}
 	}
 }

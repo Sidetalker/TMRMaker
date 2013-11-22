@@ -76,7 +76,7 @@ public class FileSearcher {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		String file = "C:/Users/Dwight/Desktop/Workspace/Tyrsa/";
-		System.out.println(getJavaFileWithString("System.out.print", new File(file)));
+		String file = "C:/Users/Dwight/Desktop/Workspace/TMRMaker/";
+		System.out.println(getJavaFileWithString("replace", new File(file)));
 	}
 }

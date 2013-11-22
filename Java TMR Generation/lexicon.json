@@ -91,11 +91,13 @@
 	"know|v": {},
 
 	"like|v": {},
-	"like|prep": {},
 
 	"lot|n": {},
 
 	"meat|n": {},
+
+	"mexican|adj": {},
+	"mexican|n": {},
 
 	"my|adj": {},
 
@@ -122,8 +124,6 @@
 
 	"popular|adj": {},
 
-	"place|n": {},
-
 	"place|v": {},
 
 	"really|adv": {},
@@ -131,7 +131,10 @@
 	"recommend|v": {},
 	"recommendation|n": {},
 
-	"restaurant|n": {},
+	"restaurant|n": {
+		"syn": ["place"],
+		"plural": ["restaurants", "places"]
+	},
 
 	"rule|n": {},
 
@@ -163,6 +166,7 @@
 	"to|is": {},
 	"to|prep": {},
 
+	"tonight|adv": {},
 	"tonight|afj": {},
 
 	"too|adv": {},

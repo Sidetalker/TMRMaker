@@ -19,6 +19,7 @@ public class TMR {
 	private final HashSet<String> legalProperties = new HashSet<String>();
 	int index;
 	private String markedProperty;
+	private String goalFact;
 
 	public TMR(Deriver deriver, String identifier) {
 		this.identifier = identifier;
@@ -36,6 +37,9 @@ public class TMR {
 	}
 
 	public void changeTMRType(String newType) {
+		if (newType.equals(identifier)) {
+			return;
+		}
 		this.identifier = newType;
 		if (!indices.containsKey(identifier)) {
 			indices.put(identifier, 0);
@@ -52,6 +56,9 @@ public class TMR {
 		Iterator<String> iterator = properties.keySet().iterator();
 		while (iterator.hasNext()) {
 			String key = iterator.next();
+			if (key.equals(goalFact)) {
+				System.out.print("<?>");
+			}
 			System.out.println("\t" + key + " : " + properties.get(key));
 		}
 		System.out.println();
@@ -71,5 +78,9 @@ public class TMR {
 
 	public String getIdentifier() {
 		return identifier;
+	}
+
+	public void setGoalFact(String goalProperty) {
+		goalFact = goalProperty;
 	}
 }
