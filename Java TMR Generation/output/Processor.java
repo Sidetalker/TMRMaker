@@ -9,10 +9,8 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
 
-public class Processor
-{
-    public void test()
-    {
+public class Processor {
+    public void test() {
         // Create a hash map
         Hashtable balance = new Hashtable();
         Enumeration names;
@@ -27,51 +25,47 @@ public class Processor
 
         // Show all balances in hash table.
         names = balance.keys();
-        while(names.hasMoreElements()) {
+        while (names.hasMoreElements()) {
             str = (String) names.nextElement();
             System.out.println(str + ": " +
                     balance.get(str));
         }
     }
 
-    public boolean feedTMR(Hashtable<SentencePart, TMR> providedTMR)
-    {
+    public boolean feedTMR(Hashtable<SentencePart, TMR> providedTMR) {
         Iterator<TMR> iterator = providedTMR.values().iterator();
         HashSet<TMR> printed = new HashSet<TMR>();
 
         Enumeration<SentencePart> test = providedTMR.keys();
-        while(test.hasMoreElements()) {
+        while (test.hasMoreElements()) {
             SentencePart str = test.nextElement();
             //System.out.println(str + "ASD");
         }
 
         while (iterator.hasNext()) {
             TMR next = iterator.next();
-            if (!printed.contains(next))
-            {
-                //next.print();
+            if (!printed.contains(next)) {
+                System.out.println("ASD");
+                next.print();
             }
         }
         return true;
     }
 
-    public String getResult()
-    {
+    public String getResult() {
 
 
         JSONObject restaurants;
-        restaurants.put("FOUND");
+        //restaurants.put("FOUND");
 
         JSONObject obj = new JSONObject();
-        obj.put("LOOK-FOR-0","foo");
-        obj.put("MEAL-0",new Integer(100));
-        obj.put("balance",new Double(1000.21));
-        obj.put("is_vip",new Boolean(true));
-        obj.put("nickname",null);
+        obj.put("LOOK-FOR-0", "foo");
+        obj.put("MEAL-0", new Integer(100));
+        obj.put("balance", new Double(1000.21));
+        obj.put("is_vip", new Boolean(true));
+        obj.put("nickname", null);
         System.out.print(obj);
 
         return obj.toJSONString();
     }
 }
-
-

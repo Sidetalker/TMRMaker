@@ -23,6 +23,7 @@ import leia.parse.Dependency;
 import leia.parse.DependencyParse;
 import leia.parse.SentencePart;
 import leia.parse.Time;
+import output.Processor;
 
 public class Deriver {
 
@@ -545,14 +546,28 @@ public class Deriver {
 			}
 			deriver.resetTMRs();
 		}
-		if (!showAllTMRS) {
-			System.out
-					.println("====================================================================");
-			System.out.println(bestNum);
-			if (bestTMRIndex != -1) {
-				deriver.tmrs = tmrList.get(bestTMRIndex);
-				deriver.outputTMRs();
-			}
-		}
+
+		deriver.outputTMRs();
+
+        System.out.println("DEREK INFO BEGIN");
+
+        Processor processorTMR = new Processor();
+
+        if (!processorTMR.feedTMR(tmrList.get(bestTMRIndex)))
+        {
+            System.out.println("Error: Could not process TMR");
+        }
+
+        //System.out.println(processorTMR.getResult());
+
+//		if (!showAllTMRS) {
+//			System.out
+//					.println("====================================================================");
+//			System.out.println(bestNum);
+//			if (bestTMRIndex != -1) {
+//				deriver.tmrs = tmrList.get(bestTMRIndex);
+//				deriver.outputTMRs();
+//			}
+//		}
 	}
 }
