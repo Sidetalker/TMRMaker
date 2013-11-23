@@ -156,7 +156,7 @@ public class TMRTheorem {
 			}
 		}
 		boolean unusedVar = false;
-		for (int i = 0; i < vars.length; i++) {
+		for (int i = 0; i < found.length; i++) {
 			if (!found[i]) {
 				System.err.println("Unused variable " + vars[i] + " in rule "
 						+ rule);

@@ -28,13 +28,14 @@ x,y,z st "like"(x), v(x), child(y,x), tmr.human(y), child(z,x), tmr.category(z):
 x st "mexican"(x), n(x): tmr.category(x), tmr/type["mexican"](x)
 x,y st "my"(x), adj(x), child(y,x), n(y): possessive(y)
 x,y st "nice"(x), adj(x), child(x,y), tmr.human(y): tmr/kindness[.75](y) //the nice man
-x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/rating[1](y), tmr/niceness>0.75(y) //a nice restaurant
+x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/niceness[.75](y) //a nice restaurant
 x,y st "open"(x), adj(x), child(x,y), n(y), tmr.restruant(y): tmr/status["true"](y) //The open place
 x st "place"(x), n(x) : tmr.restaurant(x)
 x st "restaurant"(x), n(x): tmr.restaurant(x)
 x st "tomorrow"(x), adv(x) : tmr.time(x), tmr/date[today+1](x)
 x,y,z st "want"(x), v(x), child(y,x), SUBJ(y), child(z,x), DO(z) : tmr.modality(x), tmr/type["volitive"](x), tmr/value[1](x), tmr/scope(x,z), tmr/attribituted-to(x,y) // I want berries
 x st "what"(x), n(x): tmr.request-info(x)
+//x,y st "when"(s), qs(x), child(x,y), QUES(x) : 
 x,y,z st "with"(x), prep(x), child(y,x), child(x,z), tmr.human(y), tmr.event(z): tmr/beneficiary(z,y)// find dinner with my father
 
 // need #user support for these
@@ -60,3 +61,7 @@ x,y st tmr.look-for(x), tmr.time(y), child(y,x): tmr/time-of(x,y) // will need t
 //x,y st tmr.restaurant(y), child(y,x), DO(y) : tmr/location(x,y)
 //x,y st modality(x), child(y,x), DO(y) : tmr/theme(x,y)
 x,y,z st tmr.date(x), child(x,y), modality(y), child(z,y), DO(z) : tmr/date(z,x)
+
+
+//Goal fact stuff
+x,y st tmr.modality(x), tmr/type["volitive"](x), child(y,x), tmr.look-for(y) : ?tmr/theme(y)

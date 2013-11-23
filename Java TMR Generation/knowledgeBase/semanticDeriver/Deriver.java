@@ -509,11 +509,12 @@ public class Deriver {
 		// String sentence = scanner.next();
 		// scanner.close();
 		// String sentence = "When is Joe's Pizza open?";
-		String sentence = "I want to find a nice place for a dinner with my father tomorrow at 7 pm.";
+		// String sentence = "I want to find a nice place to eat sometime.";
 		// String sentence = "I like Mexican.";
 		// String sentence = "What is open tonight?";
 		// String sentence =
 		// "Could you give me a place I could eat at sometime?";
+		String sentence = "I want to find a nice place for a dinner with my father tomorrow at 7 pm.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");

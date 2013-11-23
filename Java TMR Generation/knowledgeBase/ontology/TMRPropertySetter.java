@@ -92,7 +92,8 @@ public class TMRPropertySetter {
 	}
 
 	public static boolean isTMRRelated(SemanticFact fact) {
-		return fact.getType().startsWith("tmr");
+		return fact.getType().startsWith("tmr")
+				|| fact.getType().startsWith("?tmr");
 	}
 
 	public SemanticFact getFact() {
