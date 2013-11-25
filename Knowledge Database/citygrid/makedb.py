@@ -10,7 +10,7 @@ c.execute('''create table pref_cuisine(taste_id integer primary key asc, human_i
 c.execute('''create table kin(kin_id integer primary key asc, human_id integer, relative_id integer, kin_relation text)''')
 c.execute('''create table possessions(possession_id integer primary key asc, human_id integer, possession_name text)''')
 c.execute('''create table rest_history(history_id integer primary key asc, human_id integer, rest_id integer, rating real)''')
-c.execute('''create table schedule(schedule_id integer primary key asc, is_human integer default 0, rest_id integer, human_id integer, dow integer, start_time text, end_time)''')
+c.execute('''create table schedule(schedule_id integer primary key asc, is_human integer default 0, rest_id integer, human_id integer, dow integer, start_time real, end_time real)''')
 c.execute('''create table human(human_id integer primary key asc, name text, gender text, age integer, mood text, kindness real, home_addr integer, work_addr integer)''')
 conn.commit()
 conn.close()
