@@ -1,7 +1,10 @@
 {
 	"a|det": {},
 
-	"as|prep": {},
+	"American|adj": {
+		"cat": ["New American", "Traditional American"]
+	},
+	"American|n": {},
 
 	"any|adj": {},
 
@@ -9,7 +12,31 @@
 
 	"around|prep": {},
 
+	"as|prep": {},
+
 	"at|prep": {},
+
+	"bagel|n": {
+		"cat": ["Bagel Shops"]
+	},
+
+	"baker|n": {
+		"cat": ["Bakeries"],
+		"syn": ["bakery"]
+	},
+
+	"bar|n": {
+		"cat": [
+			"Bars & Pubs", "Bars & Clubs", "Taverns",
+			"Sports Bars", "Pubs", "Brew Pubs"
+		],
+		"syn": ["pub", "tavern"]
+	},
+
+	"barbecue|n": {
+		"cat": ["Barbecue Restaurants"],
+		"syn": ["BBQ"]
+	},
 
 	"be|v": {
 		"syn": ["am", "is", "are"],
@@ -18,19 +45,117 @@
 
 	"better|adj": {},
 
+	"breakfast|n": {
+		"cat": ["Breakfast"]
+	},
+
+	"brunch|n": {
+		"cat": ["Brunch"]
+	},
+
+	"cafe|n": {
+		"cat": ["Cafes"]
+	},
+
+	"cajun|adj": {
+		"syn": ["creole"],
+		"cat": ["Cajun & Creole"]
+	},
+
+	"Californian|adj": {
+		"cat": ["Californian"]
+	},
+	"Californian|n": {},
+
 	"can|m": {
 		"syn": ["may", "might"],
 		"past": ["could"]
 	},
 
-	"cheap|adj": {},
+	"cater|v": {},
+	"catered|adj": {},
+	"catering|n": {
+		"cat": ["Catering"]
+	},
+
+	"carry out|n": {
+		"cat": ["Carry Out"]
+	},
+
+	"cheap|adj": {
+		"cat": ["Cheap Eats"],
+		"syn": ["inexpensive"]
+	},
+
+	"chicken|n": {
+		"cat": ["Chicken"]
+	},
+
+	"Chinese|adj": {
+		"cat": ["Chinese"]
+	},
+	"Chinese|n": {},
+
+	"club|n": {
+		"cat": ["Bars & Clubs"]
+	},
+
+	"coffee|n": {
+		"syn": ["caffeine"],
+		"cat": ["Coffeehouses"]
+	},
 
 	"cook|v": {},
+
+	"credit card|n": {
+		"cat": ["American Express", "Discover", "MasterCard", "Visa"]
+	},
+
+	"dairy|n": {
+		"cat": ["Dairy Products"]
+	},
+
+	"debit card|n": {
+		"cat": ["Debit Card"]
+	},
+
+	"deli|n": {
+		"cat": ["Delis and Delicatessens"],
+		"syn": ["delicatessen"]
+	},
+
+	"deliver|v": {},
+	"delivery|n": {
+		"cat": ["Food Delivery"]
+	},
+
+	"dessert|n": {
+		"cat": ["Dessert Shops"]
+	},
+
+	"diner|n": {
+		"cat": ["Diners"]
+	},
+
+	"diners club|n": {
+		"cat": ["Diners Club"]
+	},
 
 	"dinner|n": {	},
 
 	"do|m": {
 		"past": ["did"]
+	},
+
+	"doughnut|n": {
+		"cat": ["Doughnut Shops"],
+		"syn": ["donut"]
+	},
+
+	"drink|v": {},
+	"drink|n": {
+		"cat": ["Bars & Pubs", "Taverns"],
+		"syn": ["alcohol"]
 	},
 
 	"drive|v": {
@@ -40,6 +165,19 @@
 
 	"eat|v": {
 		"past": ["ate"]
+	},
+
+	"entertainment|n": {
+		"syn": ["fun"],
+		"cat": ["Arts & Entertainment"]
+	},
+
+	"family|n": {
+		"cat": ["Family Friendly Dining", "Family Style Dining"]
+	},
+
+	"fast food|n": {
+		"cat": ["Fast Food"]
 	},
 
 	"fatty|adj": {},
@@ -53,6 +191,11 @@
 	"friend|n": {},
 
 	"for|prep": {},
+
+	"frozen yogurt|n": {
+		"cat": ["Frozen Yogurt Shops"],
+		"syn": ["frozen yoghurt", "yogurt", "yoghurt"]
+	},
 
 	"give|v": {},
 
@@ -68,11 +211,26 @@
 
 	"good|adj": {},
 
+	"grill|n": {
+		"cat": ["Grill Restaurants"]
+	},
+	"grilled|adj": {
+		"cat": ["Grill Restaurants"]
+	},
+
+	"hamburger|n": {
+		"cat": ["Hamburgers"]
+	},
+
 	"have|v": {
 		"syn": ["has"]
 	},
 
 	"here|n": {},
+
+	"historic|adj": {
+		"cat": ["Historic Setting"]
+	},
 
 	"how|qs": {},
 	"how|adv": {},
@@ -84,28 +242,76 @@
 		"plural": []
 	},
 
+	"ice cream|n": {
+		"cat": ["Ice Cream Parlors"]
+	},
+
 	"in|prep": {},
 
+	"Indian|adj": {
+		"cat": ["Indian"]
+	},
+	"Indian|n": {},
+
+	"international|adj": {
+		"cat": ["Global", "Eclectic & International"],
+		"syn": ["ethnic", "global"]
+	},
+
+	"Irish|adj": {
+		"cat": ["Irish"]
+	},
+	"Irish|n": {},
+
 	"it|n": {},
+
+	"Italian|adj": {
+		"cat": ["Italian"]
+	},
+	"Italian|n": {},
 
 	"know|v": {},
 
 	"like|v": {},
 
+	"live music|n": {
+		"cat": ["Live Music"],
+		"syn": ["music", "sound", "noise", "band"]
+	},
+
+	"local|adj": {
+		"cat": ["Local Favorite"]
+	},
+
 	"lot|n": {},
 
-	"meat|n": {},
+	"lunch|n": {
+		"cat": ["Lunch Spot"]
+	},
 
-	"mexican|adj": {},
-	"mexican|n": {},
+	"meat|n": {
+		"cat": ["Barbecue Restaurants", "Chicken", "Hamburgers", "Steakhouse"]
+	},
+
+	"Mexican|adj": {
+		"cat": ["Mexican"]
+	},
+	"Mexican|n": {},
 
 	"my|adj": {},
-
-	"nice|adj": {},
 
 	"near|adj": {
 		"syn": ["close", "nearby"]
 	},
+
+	"nice|adj": {},
+
+	"night club|n": {
+		"cat": ["Nightclubs"],
+		"syn": ["nightclub"]
+	},
+
+	"no|int": {},
 
 	"not|adv": {},
 
@@ -113,12 +319,23 @@
 
 	"on|prep": {},
 
+	"one|n": {},
+
 	"open|adj": {},
+
+	"outdoor|adj": {
+		"cat": ["Outdoor Dining"]
+	},
+	"outdoors|adv": {},
 
 	"person|n": {
 		"syn": ["fellow"],
 		"plural": ["people", "fellows"]
 	},
+
+	"pick|v": {},
+
+	"pizza|n": {},
 
 	"poor|adj": {},
 
@@ -136,9 +353,22 @@
 		"plural": ["restaurants", "places"]
 	},
 
+	"romantic|adj": {
+		"cat": ["Romantic Dining"]
+	},
+
 	"rule|n": {},
 
 	"salt|n": {},
+
+	"sandwich|n": {
+		"cat": ["Sandwich Shops"]
+	},
+
+	"seafood|n": {
+		"cat": ["Seafood"],
+		"syn": ["fish"]
+	},
 
 	"set|n": {},
 
@@ -146,7 +376,27 @@
 
 	"show|v": {},
 
-	"something|n": {},
+	"something|nb": {},
+	"sometime|adv": {},
+	"somewhere|nb": {},
+
+	"soup|n": {
+		"cat": ["Soups"]
+	},
+
+	"Southern|adj": {
+		"cat": ["Southern"]
+	},
+	"Southern|n": {},
+
+	"sports|n": {
+		"cat": ["Sports Bars"]
+	},
+
+	"steakhouse|n": {
+		"cat": ["Steakhouse"],
+		"syn": ["steak"]
+	},
 
 	"the|det": {},
 
@@ -177,6 +427,10 @@
 
 	"want|v": {},
 
+	"water|n": {
+		"cat": ["Drinking Water"]
+	},
+
 	"what|qs": {},
 	"what|n": {},
 	"when|qs": {},
@@ -195,6 +449,8 @@
 	"worth|adj": {},
 
 	"still|adv": {},
+
+	"yes|int": {},
 
 	"you|n": {}
 }
