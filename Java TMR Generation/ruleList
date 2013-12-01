@@ -9,8 +9,8 @@ x st "cook"(x), v(x): tmr.prepare(x)
 x st "dinner"(x), n(x): tmr.eat(x), tmr/scope["evening"](x)
 x,y,z st "drive"(x), v(x), child(y,x), "to"(y), prep(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/destination(x,z), tmr/instrument["car"](x)
 x,y,z st "drive"(x), v(x), child(y,x), "from"(y), prep(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z), tmr/instrument["car"](x)
-x st "drive"(x), n(x): tmr.modality(x), tmr/type["effot"](x)
-x,y st "eat"(x), v(x), child(y,x), SUBJ(y): tmr.eat(x), tmr/agent(x,y)
+x st "drive"(x), n(x): tmr.modality(x), tmr/type["effort"](x)
+x,y st "eat"(x), v(x), child(y,x): tmr.eat(x), tmr/agent(x,y)
 x st "father"(x): tmr.human(x), tmr/gender["male"](x) //my father
 x,y st "find"(x), v(x), child(y,x), SUBJ(y): tmr.look-for(x), tmr/agent(x,y) //I find
 x,y st "find"(x), v(x), child(y,x), DO(y): tmr.look-for(x), tmr/theme(x,y) // Find a place
@@ -19,6 +19,7 @@ x st "friend"(x), n(x): tmr.human(x)
 x,y,z st "for"(x), prep(x), n(y), child(y,x), v(z), child(x,z): tmr/scope(z,y) //find a place for dinner
 x,y,z st "for"(x), prep(x), "is"(y), child(x,y), child(z,y): tmr.reason-of(x), tmr/domain(x,y), tmr/range(x,z)
 x,y,z st "get"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): tmr.set-ownership(x), tmr/agent(x,y), tmr/object(x,z)
+x,y,z st "give"(x), v(x), child(y,x), child(z,x), do(y), beneficiary(z), tmr.number(y) : tmr.refine_results(x), tmr/number(x,y)
 x,y,z st "go"(x), v(x), child(y,x), "to"(y), prep(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z)
 x,y,z st "go"(x), v(x), child(y,x), "from"(y), prep(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z)
 x,y,z st "have"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): tmr.set-ownership(x), tmr/agent(x,y), tmr/object(x,z)
@@ -27,16 +28,32 @@ x st "Joe's Pizza"(x) : tmr.restaurant(x), tmr/name["Joe's Pizza"](x)
 x,y,z st "like"(x), v(x), child(y,x), tmr.human(y), child(z,x), tmr.category(z): tmr/taste+(y,z)
 x st "mexican"(x), n(x): tmr.category(x), tmr/type["mexican"](x)
 x,y st "my"(x), adj(x), child(y,x), n(y): possessive(y)
-x,y st "nice"(x), adj(x), child(x,y), tmr.human(y): tmr/kindness[.75](y) //the nice man
-x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/niceness[.75](y) //a nice restaurant
-x,y st "open"(x), adj(x), child(x,y), n(y), tmr.restruant(y): tmr/status["true"](y) //The open place
+x,y st "nice"(x), adj(x), child(x,y), tmr.human(y): tmr/kindness>0.75(y) //the nice man
+x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/niceness>0.75(y) //a nice restaurant
+x st "no"(x), int(x) : tmr.binary-response(x), tmr/value[false](x)
+x,y st "open"(x), adj(x), child(x,y), n(y), tmr.restaurant(y): tmr/status["true"](y) //The open place
+x,y st "pick"(x), v(x), child(y,x), do(y), tmr.number(y) : tmr.refine_results(x), tmr/number(x,y)
 x st "place"(x), n(x) : tmr.restaurant(x)
 x st "restaurant"(x), n(x): tmr.restaurant(x)
 x st "tomorrow"(x), adv(x) : tmr.time(x), tmr/date[today+1](x)
 x,y,z st "want"(x), v(x), child(y,x), SUBJ(y), child(z,x), DO(z) : tmr.modality(x), tmr/type["volitive"](x), tmr/value[1](x), tmr/scope(x,z), tmr/attribituted-to(x,y) // I want berries
 x st "what"(x), n(x): tmr.request-info(x)
-//x,y st "when"(s), qs(x), child(x,y), QUES(x) : 
+x,y,z,a st "when"(x), qs(x), child(x,y), QUES(y), child(z,y), "be"(z), v(z), child(a,z), subj(a) : ?tmr/hours(a)
 x,y,z st "with"(x), prep(x), child(y,x), child(x,z), tmr.human(y), tmr.event(z): tmr/beneficiary(z,y)// find dinner with my father
+x st "yes"(x), int(x) : tmr.binary-response(x), tmr/value[true](x)
+
+//Number stuff here. Only goes up to ten now, should eventually be moved over to Andy's parsing stuff.
+x st "zero"(x) : tmr.number(x), tmr/value[0](x)
+x st "one"(x) : tmr.number(x), tmr/value[1](x)
+x st "two"(x) : tmr.number(x), tmr/value[2](x)
+x st "three"(x) : tmr.number(x), tmr/value[3](x)
+x st "four"(x) : tmr.number(x), tmr/value[4](x)
+x st "five"(x) : tmr.number(x), tmr/value[5](x)
+x st "six"(x) : tmr.number(x), tmr/value[6](x)
+x st "seven"(x) : tmr.number(x), tmr/value[7](x)
+x st "eight"(x) : tmr.number(x), tmr/value[8](x)
+x st "nine"(x) : tmr.number(x), tmr/value[9](x)
+x st "ten"(x) : tmr.number(x), tmr/value[10](x)
 
 // need #user support for these
 x,y st tmr.human(x), tmr#user(x), possessive(y), tmr.human(y): tmr/social-circle+(x,y)   
