@@ -23,7 +23,6 @@ import leia.parse.Dependency;
 import leia.parse.DependencyParse;
 import leia.parse.SentencePart;
 import leia.parse.Time;
-import output.Processor;
 
 public class Deriver {
 
@@ -100,8 +99,7 @@ public class Deriver {
 				expandOn(new TMRTheoremInstance(new SemanticFact("la",
 						tree.modifiers()[0])));
 			} else if (isQuestion((Dependency) tree)) {
-				expandOn(new TMRTheoremInstance(new SemanticFact("ques",
-						tree.modifiers()[0])));
+				expandOn(new TMRTheoremInstance(new SemanticFact("ques", tree)));
 			} else if (isCommand((Dependency) tree)) {
 				expandOn(new TMRTheoremInstance(new SemanticFact("comm",
 						tree.modifiers()[0])));
@@ -513,9 +511,10 @@ public class Deriver {
 		// String sentence = "I want to find a nice place to eat sometime.";
 		 String sentence = "I like Mexican.";
 		// String sentence = "What is open tonight?";
-        // String sentence = "Could you give me a place I could eat at sometime?";
-		// String sentence = "I want to find a nice place for a dinner with my father tomorrow at 7 pm.";
-        // String sentence = "The restaurant must accept Visa.";
+		// String sentence =
+		// "Could you give me a place I could eat at sometime?";
+		String sentence = "Somewhere close";
+//		String sentence = "I want to drive Joe's Pizza to cook father tomorrow.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
@@ -546,28 +545,14 @@ public class Deriver {
 			}
 			deriver.resetTMRs();
 		}
-
-		deriver.outputTMRs();
-
-        System.out.println("DEREK INFO BEGIN");
-
-        Processor processorTMR = new Processor();
-
-        if (!processorTMR.feedTMR(tmrList.get(bestTMRIndex)))
-        {
-            System.out.println("Error: Could not process TMR");
-        }
-
-        //System.out.println(processorTMR.getResult());
-
-//		if (!showAllTMRS) {
-//			System.out
-//					.println("====================================================================");
-//			System.out.println(bestNum);
-//			if (bestTMRIndex != -1) {
-//				deriver.tmrs = tmrList.get(bestTMRIndex);
-//				deriver.outputTMRs();
-//			}
-//		}
+		if (!showAllTMRS) {
+			System.out
+					.println("====================================================================");
+			System.out.println(bestNum);
+			if (bestTMRIndex != -1) {
+				deriver.tmrs = tmrList.get(bestTMRIndex);
+				deriver.outputTMRs();
+			}
+		}
 	}
 }

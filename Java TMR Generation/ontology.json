@@ -7,6 +7,10 @@
 		"scope":"",
 		"attribituted-to":""
 	},
+	
+	"BINARY-RESPONSE": {
+		"value":""
+	}
 
 	"TIME":{
 		"inherits":"",
@@ -65,6 +69,14 @@
 		"theme":"", //type = event
 		"address":""
 	},
+	
+	"NUMBER": {
+		"value":""
+	}
+
+	"REFINE_RESULTS": {
+		"number":0 //some number
+	},
 
 	"RESTAURANT": {
 		"inherits":"PLACE",
@@ -73,7 +85,8 @@
 		"phonenumber":"XXX-XXX-XXXX",
 		"status":true,
 		"website":"",
-		"niceness":0 //evaluated from niceness function
+		"niceness":0, //evaluated from niceness function
+		"hours":""
 	},
 
 	"EVENT":{
