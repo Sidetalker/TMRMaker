@@ -44,16 +44,16 @@ public class TMRTheorem {
 			return "Included in the syntax tree.";
 		}
 		StringBuffer ret = new StringBuffer();
-		Iterator<String> variableIterator = variableTable.keySet().iterator();
-		boolean firstVar = true;
-		while (variableIterator.hasNext()) {
-			if (!firstVar) {
-				ret.append(", ");
-			}
-			firstVar = false;
-			ret.append(variableIterator.next());
-		}
-		ret.append(" st ");
+//		Iterator<String> variableIterator = variableTable.keySet().iterator();
+//		boolean firstVar = true;
+//		while (variableIterator.hasNext()) {
+//			if (!firstVar) {
+//				ret.append(", ");
+//			}
+//			firstVar = false;
+//			ret.append(variableIterator.next());
+//		}
+//		ret.append(" st ");
 		for (int i = 0; i < causes.size(); i++) {
 			if (i > 0) {
 				ret.append(", ");
