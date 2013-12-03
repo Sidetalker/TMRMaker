@@ -45,7 +45,7 @@ public class Processor {
         while (iterator.hasNext()) {
             TMR next = iterator.next();
             if (!printed.contains(next)) {
-                System.out.println("ASD");
+                //System.out.println("ASD");
                 next.print();
             }
         }
