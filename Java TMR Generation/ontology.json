@@ -11,6 +11,10 @@
 	"BINARY-RESPONSE": {
 		"value":""
 	}
+	
+	"PAYMENT-TYPE": {
+		 "type":""
+	}
 
 	"TIME":{
 		"inherits":"",
@@ -86,7 +90,8 @@
 		"status":true,
 		"website":"",
 		"niceness":0, //evaluated from niceness function
-		"hours":""
+		"hours":"",
+		"payment":[""]
 	},
 
 	"EVENT":{

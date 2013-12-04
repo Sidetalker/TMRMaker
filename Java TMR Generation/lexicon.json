@@ -1,5 +1,11 @@
 {
+	"Visa|n": {},
+	"American Express|n": {},
+	"Mastercard|n": {},
+
 	"a|det": {},
+
+	"accept|v": {},
 
 	"American|adj": {
 		"cat": ["New American", "Traditional American"]
@@ -144,6 +150,7 @@
 	"dinner|n": {	},
 
 	"do|m": {
+		"syn": ["does"],
 		"past": ["did"]
 	},
 
@@ -183,6 +190,10 @@
 	"fatty|adj": {},
 
 	"father|n": {},
+
+	"far|adj": {
+		"syn": ["faraway", "far away", "far off", "distant", "remote"]
+	},
 
 	"find|v": {},
 
@@ -397,6 +408,8 @@
 		"cat": ["Steakhouse"],
 		"syn": ["steak"]
 	},
+	
+	"take|v": {},
 
 	"the|det": {},
 
@@ -422,6 +435,8 @@
 	"too|adv": {},
 
 	"usually|adv": {},
+
+	"very|adv": {},
 
 	"want|v": {},
 

@@ -507,17 +507,12 @@ public class Deriver {
 		// String sentence = scanner.next();
 		// scanner.close();
 		// String sentence = "When is Joe's Pizza open?";
-<<<<<<< HEAD
 		// String sentence = "I want to find a nice place to eat sometime.";
 		// String sentence = "I like Mexican.";
-=======
-       // String sentence = "I want to find a nice place to eat sometime.";
-        String sentence = "When is Joe's Pizza open?";
->>>>>>> 1e9a8ccec374fe5fce1009f40480707c9cb726ce
-		// String sentence = "What is open tonight?";
+		 String sentence = "I like Mexican.";
 		// String sentence =
 		// "Could you give me a place I could eat at sometime?";
-		String sentence = "Does Joe's Pizza accept Visa?";
+//		String sentence = "Does Joe's Pizza take Visa?";
 		// String sentence =
 		// "I want to drive Joe's Pizza to cook father tomorrow.";
 		Deriver deriver = new Deriver();
