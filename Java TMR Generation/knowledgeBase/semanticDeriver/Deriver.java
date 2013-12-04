@@ -181,7 +181,7 @@ public class Deriver {
 			return;
 		}
 		instance.expanded = true;
-		instance.printProof(System.out);
+		//instance.printProof(System.out);
 		for (int i = 0; i < instance.application.size(); i++) {
 			SemanticFact curTheorem = instance.application.get(i);
 			expandOnFact(curTheorem);
@@ -228,7 +228,7 @@ public class Deriver {
 		}
 	}
 
-	Hashtable<SentencePart, TMR> tmrs = new Hashtable<SentencePart, TMR>();
+	public Hashtable<SentencePart, TMR> tmrs = new Hashtable<SentencePart, TMR>();
 
 	public boolean containsTMR(SentencePart participant) {
 		return tmrs.containsKey(participant);
@@ -254,16 +254,17 @@ public class Deriver {
 		TMR.indices = new Hashtable<String, Integer>();
 	}
 
-	private Iterator<ArrayList<TMRPropertySetter>> generateTMRInterpretations() {
+	public Iterator<ArrayList<TMRPropertySetter>> generateTMRInterpretations() {
 		// First, assemble a list of the possible tmrs that could be assigned to
 		// each SentencePart (for which tmrs are assigned).
 		Hashtable<SentencePart, ArrayList<TMRPropertySetter>> possibleTMRs = new Hashtable<SentencePart, ArrayList<TMRPropertySetter>>();
 		ArrayList<TMRPropertySetter> tmrCreators = TMRPropertySetter.setterLists
 				.get(TMRPropertySetter.SetterType.CREATION);
 		if (tmrCreators == null) {
-			System.err
-					.println("No tmrs were able to be generated from the given sentence.");
-			System.exit(0);
+            return null;
+			//System.err
+					//.println("No tmrs were able to be generated from the given sentence.");
+			//System.exit(0);
 		}
 		for (int i = 0; i < tmrCreators.size(); i++) {
 			SentencePart part = tmrCreators.get(i).getFact().getParticipant(0);
@@ -360,7 +361,8 @@ public class Deriver {
 		return ret;
 	}
 
-	private void outputTMRs() {
+	public void outputTMRs() {
+        System.out.println(tmrs.size());
 		Iterator<TMR> iterator = tmrs.values().iterator();
 		HashSet<TMR> printed = new HashSet<TMR>();
 		while (iterator.hasNext()) {
@@ -370,9 +372,9 @@ public class Deriver {
 				printed.add(next);
 			}
 		}
-	}
+    }
 
-	private int assembleTMRs(ArrayList<TMRPropertySetter> tmrCreators) {
+	public int assembleTMRs(ArrayList<TMRPropertySetter> tmrCreators) {
 		int succesfulApplications = 0;
 		ArrayList<TMRPropertySetter> referenceList = TMRPropertySetter.setterLists
 				.get(TMRPropertySetter.SetterType.REFERENCE);
@@ -402,7 +404,7 @@ public class Deriver {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void addOntology(String file) {
+	public void addOntology(String file) {
 		StringBuffer fullText = new StringBuffer();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(

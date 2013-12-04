@@ -1,0 +1,83 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+html, body, body, .container, .row, .col-md-6, .panel{
+    height: 100%;
+}
+
+.panel {
+    position: relative;
+}
+
+.panel .panel-body.chat-content {
+    overflow-y: scroll;
+    position: absolute;
+    top: 38px;
+    bottom: 60px;
+    left: 0px;
+    right: 0px;
+}
+
+.panel .panel-body.info-content {
+    overflow-y: scroll;
+    position: absolute;
+    top: 38px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 0;
+}
+
+.panel .response {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.panel .response textarea {
+    width: 80%;
+    height: 60px;
+    font-size: 1.1em;
+    border: none;
+    border-top: solid 1px #ddd;
+    resize: none;
+    outline: none;
+    padding: 10px;
+}
+
+.panel .response button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+    border-bottom-right-radius: 4px;
+    width: 20%;
+    height: 60px;
+}
+
+.chat-content .bot-title {
+    font-weight: bold;
+    color: red;
+}
+
+.chat-content .you-title {
+    font-weight: bold;
+    color: blue;
+}
+
+
+
+
+
+
+
+
+
+
+

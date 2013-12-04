@@ -3,6 +3,6 @@ TMRMaker.iml
 .project
 .idea*
 Java TMR Generation/out/*
-
+*.pyc
 
 *.iml
