@@ -419,7 +419,7 @@
 		"syn": ["steak"]
 	},
 	
-	"take|v": {}
+	"take|v": {},
 
 	"thank you|int": {
 		"syn": ["gracias", "thanks", "thank you very much"]

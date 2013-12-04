@@ -1,5 +1,7 @@
 
 {
+	"THANK-YOU": {},
+
 	"MODALITY":{
 		"inherits":"",
 		"type":"",
@@ -34,10 +36,10 @@
 		"social-circle":[""], //list of friends
 		"kin":[""], //may need to expand to siblings and parents.
 		"owns":[""], // list of owned things
-		"taste":[""], //list of preferred cusine types.
-		"prev-restruants":[
-			{"name":"", // restruant name
-			"user-rating":1 // rating of the restruant
+		"taste":[""], //list of preferred cuisine types.
+		"prev-restaurant":[
+			{"name":"", // restaurant name
+			"user-rating":1 // rating of the restaurant
 		}],
 		"mood":"", //user mood?
 		"kindness":0, // 0-1

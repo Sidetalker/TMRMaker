@@ -509,7 +509,7 @@ public class Deriver {
 		// String sentence = "When is Joe's Pizza open?";
 		// String sentence = "I want to find a nice place to eat sometime.";
 		// String sentence = "I like Mexican.";
-		 String sentence = "I want to find a nice place for a dinner with my father tomorrow at 7 pm.";
+		 String sentence = "goodbye.";
 		// String sentence =
 		// "Could you give me a place I could eat at sometime?";
 //		String sentence = "Does Joe's Pizza take Visa?";

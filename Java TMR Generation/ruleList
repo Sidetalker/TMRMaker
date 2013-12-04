@@ -44,6 +44,8 @@ x,y st "pick"(x), v(x), child(y,x), do(y), tmr.number(y) : tmr.refine_results(x)
 x st "place"(x), n(x) : tmr.restaurant(x)
 x st "restaurant"(x), n(x): tmr.restaurant(x)
 x st "take"(x), v(x) : payment_type_query(x)
+x st "thank you"(x) : tmr.thank-you (x)
+x st "bye"(x) : tmr.thank-you (x)
 x st "tomorrow"(x), adv(x) : tmr.time(x), tmr/date[today+1](x)
 x,y,z st "want"(x), v(x), child(y,x), SUBJ(y), child(z,x), DO(z) : tmr.modality(x), tmr/type["volitive"](x), tmr/value[1](x), tmr/scope(x,z), tmr/attribituted-to(x,y) // I want berries
 x,y,z st "want"(x), v(x), child(y,x), SUBJ(y), child(z,x), la(z): tmr.modality(x), tmr/type["volitive"](x), tmr/value[1](x), tmr/scope(x,z), tmr/attribituted-to(x,y)
