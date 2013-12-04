@@ -27,12 +27,13 @@ x,y,z st "have"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): 
 x st "i"(x), n(x) : tmr.human(x), tmr#user(x)
 x st "Joe's Pizza"(x) : tmr.restaurant(x), tmr/name["Joe's Pizza"](x)
 x,y,z st "like"(x), v(x), child(y,x), tmr.human(y), child(z,x), tmr.category(z): tmr/taste+(y,z)
+x,y,z,a st "like"(x), v(x), child(y,x), child(a,x), tmr.human(a), child(z,y), tmr.food(y), tmr.category(z) : tmr/taste+(a,z)
 x,y st "my"(x), adj(x), child(y,x), n(y): possessive(y)
 x,y st "nice"(x), adj(x), child(x,y), tmr.human(y): tmr/kindness>0.75(y) //the nice man
 x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/niceness>0.75(y) //a nice restaurant
 x st "no"(x), int(x) : tmr.binary-response(x), tmr/value[false](x)
 x,y st "open"(x), adj(x), child(x,y), n(y), tmr.restaurant(y): tmr/status["true"](y) //The open place
-x st "open"(x): tmr.restaurant(x), ?tmr/status(x)
+x,y,z,a,b st child(x,a), child(b,a), "be"(x), "when"(b), child(y,x), child(z,x), "open"(y), tmr.restaurant(z): ?tmr/status(z)
 x,y st "pick"(x), v(x), child(y,x), do(y), tmr.number(y) : tmr.refine_results(x), tmr/number(x,y)
 x st "place"(x), n(x) : tmr.restaurant(x)
 x st "restaurant"(x), n(x): tmr.restaurant(x)

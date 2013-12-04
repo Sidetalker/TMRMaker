@@ -374,7 +374,6 @@ public class Deriver {
 
 	private int assembleTMRs(ArrayList<TMRPropertySetter> tmrCreators) {
 		int succesfulApplications = 0;
-		// FIXME: Resolve reference errors beforehand.
 		ArrayList<TMRPropertySetter> referenceList = TMRPropertySetter.setterLists
 				.get(TMRPropertySetter.SetterType.REFERENCE);
 		for (int i = 0; i < referenceList.size(); i++) {
@@ -509,16 +508,13 @@ public class Deriver {
 		// scanner.close();
 		// String sentence = "When is Joe's Pizza open?";
 		// String sentence = "I want to find a nice place to eat sometime.";
-		 String sentence = "What time is Joe's Pizza open?";
+		// String sentence = "I like Mexican.";
 		// String sentence = "What is open tonight?";
 		// String sentence =
 		// "Could you give me a place I could eat at sometime?";
-<<<<<<< HEAD
-		String sentence = "I like Mexican.";
-=======
-		// String sentence = "Somewhere close";
->>>>>>> fb86ca0a8019aa6e05735bcf43103b5653e9ce94
-//		String sentence = "I want to drive Joe's Pizza to cook father tomorrow.";
+		String sentence = "Does Joe's Pizza accept Visa?";
+		// String sentence =
+		// "I want to drive Joe's Pizza to cook father tomorrow.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");

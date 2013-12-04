@@ -49,7 +49,7 @@ public class TMRPropertySetter {
 		MARKER,
 		/**
 		 * Marking a given fact as the thing we want to find.<br>
-		 * ?tmr/prop(x)FIXME: Doens't work yet.
+		 * ?tmr/prop(x)
 		 */
 		GOALFACT
 	}
