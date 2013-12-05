@@ -1,5 +1,8 @@
 //Lexicon stuff (alphabetized by word)
 x,y st "a"(x), det(x), child(y,x): singular(y) // a dinner
+x st "accept"(x), v(x) : payment_type_query(x)
+x,y,z st payment_type_query(x), child(y,x), child(z,x), subj(z), do(y), tmr.payment-type(y), tmr.restaurant(z) : tmr/payment+(z,y)
+x,y,z st QUES(x), child(y,x), payment_type_query(y), child(z,y), tmr.restaurant(z) : ?tmr/payment(z)
 x st "anything"(x), n(x): tmr.phys-obj(x)
 x,y st "around"(x), prep(x), child(x,y), n(y), tmr.restaurant(y): tmr.near(y), tmr/domain(y,y)
 x,y,z st "at"(x), prep(x), child(y,x), tmr.time(y), child(x,z), v(z): tmr.specify-time(x), tmr/theme(x,z), tmr/time(x,y) 
@@ -11,7 +14,10 @@ x,y,z st "drive"(x), v(x), child(y,x), "to"(y), prep(y), child(z,y), tmr.restaur
 x,y,z st "drive"(x), v(x), child(y,x), "from"(y), prep(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z), tmr/instrument["car"](x)
 x st "drive"(x), n(x): tmr.modality(x), tmr/type["effort"](x)
 x,y st "eat"(x), v(x), child(y,x), tmr.human(y): tmr.eat(x), tmr/agent(x,y)
+x,y,z st "eat"(x), v(x), child(y,x), child(z,y), tmr.human(z): tmr.eat(x)
 x,y st "eat"(x), v(x), child(y,x), do(y): tmr.eat(x), tmr/theme(x,y)
+x,y st "eat"(x), v(x), child(y,x), la(y): tmr.eat(x), tmr/theme(x,y)
+x,y,z st "eat"(x), v(x), child(y,x), prep(y), child(z,y): tmr.eat(x)
 x st "father"(x): tmr.human(x), tmr/gender["male"](x) //my father
 x,y st "find"(x), v(x), child(y,x), SUBJ(y): tmr.look-for(x), tmr/agent(x,y) //I find
 x,y st "find"(x), v(x), child(y,x), DO(y): tmr.look-for(x), tmr/theme(x,y) // Find a place
@@ -27,20 +33,26 @@ x,y,z st "have"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): 
 x st "i"(x), n(x) : tmr.human(x), tmr#user(x)
 x st "Joe's Pizza"(x) : tmr.restaurant(x), tmr/name["Joe's Pizza"](x)
 x,y,z st "like"(x), v(x), child(y,x), tmr.human(y), child(z,x), tmr.category(z): tmr/taste+(y,z)
+x,y,z,a st "like"(x), v(x), child(y,x), child(a,x), tmr.human(a), child(z,y), tmr.food(y), tmr.category(z) : tmr/taste+(a,z)
 x,y st "my"(x), adj(x), child(y,x), n(y): possessive(y)
 x,y st "nice"(x), adj(x), child(x,y), tmr.human(y): tmr/kindness>0.75(y) //the nice man
 x,y st "nice"(x), adj(x), child(x,y), tmr.restaurant(y): tmr/niceness>0.75(y) //a nice restaurant
 x st "no"(x), int(x) : tmr.binary-response(x), tmr/value[false](x)
 x,y st "open"(x), adj(x), child(x,y), n(y), tmr.restaurant(y): tmr/status["true"](y) //The open place
-x st "open"(x): tmr.restaurant(x), ?tmr/status(x)
+x,y,z,a,b st child(x,a), child(b,a), "be"(x), "when"(b), child(y,x), child(z,x), "open"(y), tmr.restaurant(z): ?tmr/status(z)
 x,y st "pick"(x), v(x), child(y,x), do(y), tmr.number(y) : tmr.refine_results(x), tmr/number(x,y)
 x st "place"(x), n(x) : tmr.restaurant(x)
 x st "restaurant"(x), n(x): tmr.restaurant(x)
+x st "take"(x), v(x) : payment_type_query(x)
+x st "thank you"(x) : tmr.thank-you (x)
+x st "bye"(x) : tmr.thank-you (x)
 x st "tomorrow"(x), adv(x) : tmr.time(x), tmr/date[today+1](x)
 x,y,z st "want"(x), v(x), child(y,x), SUBJ(y), child(z,x), DO(z) : tmr.modality(x), tmr/type["volitive"](x), tmr/value[1](x), tmr/scope(x,z), tmr/attribituted-to(x,y) // I want berries
+x,y,z st "want"(x), v(x), child(y,x), SUBJ(y), child(z,x), la(z): tmr.modality(x), tmr/type["volitive"](x), tmr/value[1](x), tmr/scope(x,z), tmr/attribituted-to(x,y)
 x st "what"(x), n(x): tmr.request-info(x)
 x,y,z,a st "when"(x), qs(x), child(x,y), QUES(y), child(z,y), "be"(z), v(z), child(a,z), subj(a) : ?tmr/hours(a)
 x,y,z st "with"(x), prep(x), child(y,x), child(x,z), tmr.human(y), tmr.event(z): tmr/beneficiary(z,y)// find dinner with my father
+x st "visa"(x), n(x) : tmr.payment-type(x), tmr/type["visa"](x)
 x st "yes"(x), int(x) : tmr.binary-response(x), tmr/value[true](x)
 
 //Number stuff here. Only goes up to ten now, should eventually be moved over to Andy's parsing stuff.
@@ -125,17 +137,7 @@ x,y st tmr.eat(x), tmr.restaurant(y): tmr/location(x,y)
 x,y st tmr.look-for(x), tmr.time(y), child(y,x): tmr/time-of(x,y) // will need to generalize for all events; multiple level inheritance necessary
 // in regards to "at": i
 x,y,z st la(x), tmr.request-info(y), child(x,z), child(y,z): tmr/theme(y,x)
-
-
-
-//x,y st tmr.human(x), adj(x), child(x,y) : tmr/inreferenceto(y,x)
-//x,y,z st joiner(y), child(y,x), child(z,y) : tmr/participant+(x,z)
-//x,y,z st specifier(y), child(y,x), child(z,y) : tmr/theme(x,z)
-//x,y st locate_action(x), child(y,x), DO(y) : tmr/theme(x,y)
-//x,y st tmr.human(x), n(x), child(x,y) : tmr/participant(y,x)
-//x st locate_action(x) : tmr/location?(x)
-//x,y st tmr.restaurant(y), child(y,x), DO(y) : tmr/location(x,y)
-//x,y st modality(x), child(y,x), DO(y) : tmr/theme(x,y)
+x,y st tmr.restaurant(x), child(y,x), tmr.category(y): tmr/genre+(x,y)
 x,y,z st tmr.date(x), child(x,y), modality(y), child(z,y), DO(z) : tmr/date(z,x)
 
 

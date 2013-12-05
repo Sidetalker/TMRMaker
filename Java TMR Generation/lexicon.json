@@ -1,5 +1,13 @@
 {
+	"Visa|n": {},
+	"American Express|n": {},
+	"Master Card|n": {
+		"syn": ["MasterCard"]
+	},
+
 	"a|det": {},
+
+	"accept|v": {},
 
 	"American|adj": {
 		"cat": ["New American", "Traditional American"]
@@ -51,6 +59,10 @@
 
 	"brunch|n": {
 		"cat": ["Brunch"]
+	},
+
+	"bye|int": {
+		"syn": ["goodbye", "good bye", "adios", "so long", "farewell"]
 	},
 
 	"cafe|n": {
@@ -144,6 +156,7 @@
 	"dinner|n": {	},
 
 	"do|m": {
+		"syn": ["does"],
 		"past": ["did"]
 	},
 
@@ -183,6 +196,10 @@
 	"fatty|adj": {},
 
 	"father|n": {},
+
+	"far|adj": {
+		"syn": ["faraway", "far away", "far off", "distant", "remote"]
+	},
 
 	"find|v": {},
 
@@ -224,6 +241,10 @@
 
 	"have|v": {
 		"syn": ["has"]
+	},
+
+	"hi|int": {
+		"syn": ["hello", "good morning", "good afternoon", "good evening", "hola"]
 	},
 
 	"here|n": {},
@@ -397,19 +418,25 @@
 		"cat": ["Steakhouse"],
 		"syn": ["steak"]
 	},
+	
+	"take|v": {},
 
-	"the|det": {},
+	"thank you|int": {
+		"syn": ["gracias", "thanks", "thank you very much"]
+	},
 
 	"that|n": {},
 	"that|done-to-relativiser": {},
 	"that|does-relativiser": {},
 
-	"this|adj": {},
+	"the|det": {},
 
 	"there|n": {},
 	"there|afj": {
 		"eg": ["The food there"]
 	},
+
+	"this|adj": {},
 
 	"time|n": {},
 
@@ -422,6 +449,8 @@
 	"too|adv": {},
 
 	"usually|adv": {},
+
+	"very|adv": {},
 
 	"want|v": {},
 

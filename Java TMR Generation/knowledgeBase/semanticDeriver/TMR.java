@@ -75,13 +75,18 @@ public class TMR {
 	public void print() {
 		System.out.println(this);
 		Iterator<String> iterator = properties.keySet().iterator();
+		boolean printedGoal = false;
 		while (iterator.hasNext()) {
 			String key = iterator.next();
 			System.out.print("\t");
 			if (key.equals(goalFact)) {
+				printedGoal = true;
 				System.out.print("<?>");
 			}
 			System.out.println(key + " : " + properties.get(key));
+		}
+		if (!printedGoal && goalFact != null) {
+			System.out.println("\t<?>" + goalFact + " :");
 		}
 		System.out.println();
 	}
@@ -105,4 +110,8 @@ public class TMR {
 	public void setGoalFact(String goalProperty) {
 		goalFact = goalProperty;
 	}
+
+    public String getGoalFact() {
+        return goalFact;
+    }
 }

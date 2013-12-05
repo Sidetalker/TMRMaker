@@ -1,5 +1,7 @@
 
 {
+	"THANK-YOU": {},
+
 	"MODALITY":{
 		"inherits":"",
 		"type":"",
@@ -10,6 +12,10 @@
 	
 	"BINARY-RESPONSE": {
 		"value":""
+	}
+	
+	"PAYMENT-TYPE": {
+		 "type":""
 	}
 
 	"TIME":{
@@ -30,10 +36,10 @@
 		"social-circle":[""], //list of friends
 		"kin":[""], //may need to expand to siblings and parents.
 		"owns":[""], // list of owned things
-		"taste":[""], //list of preferred cusine types.
-		"prev-restruants":[
-			{"name":"", // restruant name
-			"user-rating":1 // rating of the restruant
+		"taste":[""], //list of preferred cuisine types.
+		"prev-restaurant":[
+			{"name":"", // restaurant name
+			"user-rating":1 // rating of the restaurant
 		}],
 		"mood":"", //user mood?
 		"kindness":0, // 0-1
@@ -86,7 +92,8 @@
 		"status":true,
 		"website":"",
 		"niceness":0, //evaluated from niceness function
-		"hours":""
+		"hours":"",
+		"payment":[""]
 	},
 
 	"EVENT":{
