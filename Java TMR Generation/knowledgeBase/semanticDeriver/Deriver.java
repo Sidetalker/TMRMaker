@@ -512,12 +512,7 @@ public class Deriver {
         String sentence = "When is Joe's Pizza open?";
 		// String sentence = "What is open tonight?";
 		// String sentence =
-		// "Could you give me a place I could eat at sometime?";
-<<<<<<< HEAD
-		String sentence = "I like Mexican.";
-=======
-		// String sentence = "Somewhere close";
->>>>>>> fb86ca0a8019aa6e05735bcf43103b5653e9ce94
+		// "Could you give me a place I could eat at sometime?"
 //		String sentence = "I want to drive Joe's Pizza to cook father tomorrow.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
