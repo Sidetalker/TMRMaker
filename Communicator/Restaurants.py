@@ -2,8 +2,6 @@ __author__ = 'kevin'
 
 import math
 import urllib2
-import time
-import datetime
 from com.xhaus.jyson import JysonCodec as json
 from com.ziclix.python.sql import zxJDBC
 
@@ -11,9 +9,9 @@ from com.ziclix.python.sql import zxJDBC
 databaseLocation = 'jdbc:sqlite:/Users/sideslapd/Documents/Git Repos/TMRMaker/Knowledge Database/citygrid/LEIANiceness.db'
 
 # Variables for niceness computation
-cat_pref_boost = 0
-cost_boost = 6.0
-rating_multiplier = 1.0
+cat_pref_boost = 1.4
+cost_boost = 6.7
+rating_multiplier = 1.1
 
 query_limit = 5  # How many distance queries should we make to Google
 
@@ -164,6 +162,7 @@ class Restaurant:
         self.schedule_starts = []
         self.schedule_ends = []
         self.niceness = 0
+        self.grab_hours
 
     # Compute niceness from rating, price and category preferences
     # Category preferences are loaded from user preferences which can
@@ -241,6 +240,9 @@ class RestaurantGroup:
     arg_category = 0
     categories = []
     sorted_by = None
+    query_current = 0
+    query_name = None
+    query_values = []
 
     def __init__(self, the_user):
         self.restaurants = []
@@ -251,6 +253,9 @@ class RestaurantGroup:
         self.categories = []
         self.current_user = the_user
         self.sorted_by = None
+        self.query_current = 0
+        self.query_name = None
+        self.query_values = []
         self.populate()
 
     # Called at initialization this function queries the database for all
@@ -323,6 +328,12 @@ class RestaurantGroup:
         # Reset the list of filtered restaurants
         self.filtered_restaurants = self.restaurants
 
+        # Get information for a single named restaurant
+        if what == 'info':
+            self.filtered_restaurants = [x for x in self.filtered_restaurants
+                                         if x.name == self.query_name]
+            return
+
         # Filter by category
         if self.arg_category >= 1:
             self.filtered_restaurants = [x for x in self.filtered_restaurants if
@@ -341,18 +352,13 @@ class RestaurantGroup:
 
         return False
 
-    # Returns restrictions in a dictionary
+    # Returns current information in a dictionary
     def hist_dict(self):
-        the_dict = {}
-
-        if self.arg_niceness:
-            the_dict['niceness'] = self.niceness
-
-        if self.arg_category:
-            the_dict['category'] = self.categories
-
-        if self.sorted_by is not None:
-            the_dict['sorted'] = self.sorted_by
+        the_dict = {'niceness': self.niceness, 'category': self.categories,
+                    'sorted': self.sorted_by, 'info_query': {}}
+        the_dict['info_query']['name'] = self.query_name
+        the_dict['info_query']['current'] = self.query_current
+        the_dict['info_query']['values'] = self.query_values
 
         return the_dict
 
@@ -421,6 +427,24 @@ class TMRProcessor:
         desired_niceness = None
         desired_type = None
         user_preference = None
+        self.restaurant_group.query_current = 0
+
+        # Check for restaurant information query
+        if 'RESTAURANT-0' in tmr:
+            search_term = []
+            name = None
+            for value in tmr['RESTAURANT-0']:
+                if tmr['RESTAURANT-0'][value] is None:
+                    search_term.append(value)
+                if value == 'name':
+                    name = tmr['RESTAURANT-0'][value]
+
+            if name is not None:
+                self.restaurant_group.query_values = search_term
+                self.restaurant_group.query_current = 1
+                self.restaurant_group.query_name = name
+                self.restaurant_group.narrow('info', None, False)
+                return self.restaurant_group.hist_dict()
 
         # Check for user's current desire
         if 'MODALITY-0' in tmr:
@@ -444,28 +468,28 @@ class TMRProcessor:
         # Check for human taste preference
         if 'HUMAN-0' in tmr:
             if 'taste' in tmr['HUMAN-0']:
-                taste = tmr['HUMAN-0']['taste']
+                location = tmr['HUMAN-0']['taste']
 
-                if taste in tmr:
-                    if 'type' in tmr[taste]:
-                        user_preference = tmr[taste]['type']
+                if location in tmr:
+                    if 'type' in tmr[location]:
+                        user_preference = tmr[location]['type']
 
         # Apply history
         for what, value in queries.iteritems():
-            self.restaurant_group.narrow(what, value)
+            self.restaurant_group.narrow(what, value, False)
 
         # Apply new niceness desire
         if desired_niceness is not None:
-            self.restaurant_group.narrow('niceness', desired_niceness)
+            self.restaurant_group.narrow('niceness', desired_niceness, False)
 
         # Apply new type desire
         if desired_type is not None:
-            self.restaurant_group.narrow('category', desired_type)
+            self.restaurant_group.narrow('category', desired_type, False)
 
         # Apply new type desire and store user preference
         if user_preference is not None:
             self.current_user.add_preference(desired_type)
-            self.restaurant_group.narrow('category', desired_type)
+            self.restaurant_group.narrow('category', desired_type, False)
 
         return self.restaurant_group.hist_dict()
 
@@ -500,13 +524,16 @@ def lat_long_distance(lat1, long1, lat2, long2):
 # This function uses Google to calculate a precise route
 # Distance using two lat/long coordinates
 def route_distance(lat1, long1, lat2, long2):
+    # Form a request string to Google's web API
     request_string = ('http://maps.googleapis.com/maps/api/distancematrix/json?origins='
                       '%f,%f&destinations=%f,%f&mode=driving&sensor=false') % (lat1, long1, lat2, long2)
 
+    # Send the query and convert + store the response
     response = urllib2.urlopen(request_string)
     json_response = response.read()
     dict_response = json.loads(json_response)
 
+    # Interpret the json dict and convert meters to miles
     meters = dict_response['rows'][0]['elements'][0]['distance']['value']
     miles = meters * 0.000621371
 
