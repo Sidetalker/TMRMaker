@@ -25,13 +25,13 @@ x st "food"(x), n(x): tmr.food(x)
 x st "friend"(x), n(x): tmr.human(x)
 x,y,z st "for"(x), prep(x), n(y), child(y,x), v(z), child(x,z): tmr/scope(z,y) //find a place for dinner
 x,y,z st "for"(x), prep(x), "is"(y), child(x,y), child(z,y): tmr.reason-of(x), tmr/domain(x,y), tmr/range(x,z)
+x,y,z st "for"(x), prep(x), "does"(y), child(x,y), child(z,y): tmr.reason-of(x), tmr/domain(x,y), tmr/range(x,z)
 x,y,z st "get"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): tmr.set-ownership(x), tmr/agent(x,y), tmr/object(x,z)
 x,y,z st "give"(x), v(x), child(y,x), child(z,x), do(y), beneficiary(z), tmr.number(y) : tmr.refine_results(x), tmr/number(x,y)
 x,y,z st "go"(x), v(x), child(y,x), "to"(y), prep(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z)
 x,y,z st "go"(x), v(x), child(y,x), "from"(y), prep(y), child(z,y), tmr.restaurant(z): tmr.transport(x), tmr/source(x,z)
 x,y,z st "have"(x), v(x), child(x,y), SUBJ(y), tmr.human(y), child(x,z), DO(z): tmr.set-ownership(x), tmr/agent(x,y), tmr/object(x,z)
 x st "i"(x), n(x) : tmr.human(x), tmr#user(x)
-x st "Joe's Pizza"(x) : tmr.restaurant(x), tmr/name["Joe's Pizza"](x)
 x,y,z st "like"(x), v(x), child(y,x), tmr.human(y), child(z,x), tmr.category(z): tmr/taste+(y,z)
 x,y,z,a st "like"(x), v(x), child(y,x), child(a,x), tmr.human(a), child(z,y), tmr.food(y), tmr.category(z) : tmr/taste+(a,z)
 x,y st "my"(x), adj(x), child(y,x), n(y): possessive(y)
@@ -138,6 +138,8 @@ x,y st tmr.look-for(x), tmr.time(y), child(y,x): tmr/time-of(x,y) // will need t
 // in regards to "at": i
 x,y,z st la(x), tmr.request-info(y), child(x,z), child(y,z): tmr/theme(y,x)
 x,y st tmr.restaurant(x), child(y,x), tmr.category(y): tmr/genre+(x,y)
+x,y,z st "have"(x), v(x), child(y,x), child(z,x), tmr.category(z), la(z), subj(y), tmr.restaurant(y) : tmr/genre+(y,z)
+x,y,z,a st child(x,a), ques(a), "have"(x), v(x), child(y,x), child(z,x), tmr.category(z), la(z), subj(y), tmr.restaurant(y) : ?tmr/genre(y)
 x,y,z st tmr.date(x), child(x,y), modality(y), child(z,y), DO(z) : tmr/date(z,x)
 
 

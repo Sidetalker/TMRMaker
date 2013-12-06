@@ -181,7 +181,7 @@ public class Deriver {
 			return;
 		}
 		instance.expanded = true;
-		//instance.printProof(System.out);
+		instance.printProof(System.out);
 		for (int i = 0; i < instance.application.size(); i++) {
 			SemanticFact curTheorem = instance.application.get(i);
 			expandOnFact(curTheorem);
@@ -228,7 +228,7 @@ public class Deriver {
 		}
 	}
 
-	public Hashtable<SentencePart, TMR> tmrs = new Hashtable<SentencePart, TMR>();
+	Hashtable<SentencePart, TMR> tmrs = new Hashtable<SentencePart, TMR>();
 
 	public boolean containsTMR(SentencePart participant) {
 		return tmrs.containsKey(participant);
@@ -254,17 +254,16 @@ public class Deriver {
 		TMR.indices = new Hashtable<String, Integer>();
 	}
 
-	public Iterator<ArrayList<TMRPropertySetter>> generateTMRInterpretations() {
+	private Iterator<ArrayList<TMRPropertySetter>> generateTMRInterpretations() {
 		// First, assemble a list of the possible tmrs that could be assigned to
 		// each SentencePart (for which tmrs are assigned).
 		Hashtable<SentencePart, ArrayList<TMRPropertySetter>> possibleTMRs = new Hashtable<SentencePart, ArrayList<TMRPropertySetter>>();
 		ArrayList<TMRPropertySetter> tmrCreators = TMRPropertySetter.setterLists
 				.get(TMRPropertySetter.SetterType.CREATION);
 		if (tmrCreators == null) {
-            return null;
-			//System.err
-					//.println("No tmrs were able to be generated from the given sentence.");
-			//System.exit(0);
+			System.err
+					.println("No tmrs were able to be generated from the given sentence.");
+			System.exit(0);
 		}
 		for (int i = 0; i < tmrCreators.size(); i++) {
 			SentencePart part = tmrCreators.get(i).getFact().getParticipant(0);
@@ -361,8 +360,7 @@ public class Deriver {
 		return ret;
 	}
 
-	public void outputTMRs() {
-        System.out.println(tmrs.size());
+	private void outputTMRs() {
 		Iterator<TMR> iterator = tmrs.values().iterator();
 		HashSet<TMR> printed = new HashSet<TMR>();
 		while (iterator.hasNext()) {
@@ -372,9 +370,9 @@ public class Deriver {
 				printed.add(next);
 			}
 		}
-    }
+	}
 
-	public int assembleTMRs(ArrayList<TMRPropertySetter> tmrCreators) {
+	private int assembleTMRs(ArrayList<TMRPropertySetter> tmrCreators) {
 		int succesfulApplications = 0;
 		ArrayList<TMRPropertySetter> referenceList = TMRPropertySetter.setterLists
 				.get(TMRPropertySetter.SetterType.REFERENCE);
@@ -404,7 +402,7 @@ public class Deriver {
 	}
 
 	@SuppressWarnings("unchecked")
-	public void addOntology(String file) {
+	private void addOntology(String file) {
 		StringBuffer fullText = new StringBuffer();
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(
@@ -452,6 +450,42 @@ public class Deriver {
 						curTMREntry.getValue().put(curKey, curTMR.get(curKey));
 					}
 				}
+			}
+		}
+	}
+
+	@SuppressWarnings("unchecked")
+	private void addOnomasticalConcepts(String file) {
+		StringBuffer fullText = new StringBuffer();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(
+					new File(file)));
+			String line;
+			while ((line = br.readLine()) != null) {
+				if (line.contains("//")) {
+					line = line.substring(0, line.indexOf("//"));
+				}
+				fullText.append(line + "\n");
+			}
+			br.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		JSONObject parse = (JSONObject) JSONValue.parse(fullText.toString());
+		Iterator<String> tmrTypeIterator = parse.keySet().iterator();
+		while (tmrTypeIterator.hasNext()) {
+			String restaurant = tmrTypeIterator.next().toString();
+			String[] wordSplit = restaurant.split(" ");
+			addNewTheorem("x st \"" + restaurant
+					+ "\"(x) : tmr.restaurant(x), tmr/name[\"" + restaurant
+					+ "\"](x)");
+			if (wordSplit.length > 1) {
+				addNewTheorem("x st \"" + wordSplit[0]
+						+ "\"(x) : tmr.restaurant(x), tmr/name[\""
+						+ wordSplit[0] + "\"](x)");
 			}
 		}
 	}
@@ -510,16 +544,16 @@ public class Deriver {
 		// scanner.close();
 		// String sentence = "When is Joe's Pizza open?";
 		// String sentence = "I want to find a nice place to eat sometime.";
-		// String sentence = "I like Mexican.";
-		 String sentence = "goodbye.";
+		String sentence = "Does Taco Bell have Mexican?";
 		// String sentence =
 		// "Could you give me a place I could eat at sometime?";
-//		String sentence = "Does Joe's Pizza take Visa?";
+		// String sentence = "Does Joe's Pizza take Visa?";
 		// String sentence =
 		// "I want to drive Joe's Pizza to cook father tomorrow.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
+		deriver.addOnomasticalConcepts("onomasticon.json");
 		SentencePart part = DependencyParse.parse(sentence)[0];
 		System.out.println("\"" + sentence + "\"");
 		System.out.println(part);

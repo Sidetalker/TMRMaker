@@ -110,8 +110,4 @@ public class TMR {
 	public void setGoalFact(String goalProperty) {
 		goalFact = goalProperty;
 	}
-
-    public String getGoalFact() {
-        return goalFact;
-    }
 }
