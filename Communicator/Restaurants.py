@@ -170,7 +170,10 @@ class Restaurant:
             if category in self.categories:
                 self.fit_rating += 1
 
-        self.fit_rating /= len(req_cats)
+        if len(req_cats) > 0:
+            self.fit_rating /= float(len(req_cats))
+        else:
+            self.fit_rating = 0
 
     # Compute niceness from rating, price and category preferences
     # Category preferences are loaded from user preferences which can
@@ -386,7 +389,7 @@ class RestaurantGroup:
     # Sorts by niceness or distance (easily expandable)
     def sort_output(self, parameter=None):
         for restaurant in self.filtered_restaurants:
-            restaurant.compute_fit_rating()
+            restaurant.compute_fit_rating(self.categories)
 
         sorted_restaurants = sorted(self.filtered_restaurants, key=lambda restaurant:
                                     restaurant.fit_rating, reverse=True)
@@ -563,14 +566,18 @@ def route_distance(lat1, long1, lat2, long2):
     return miles
 
 
+tmr1 = {"RESTAURANT-0": {"niceness": ">0.75"}, "HUMAN-0": {}, "SPECIFY-TIME-0": {"theme": "LOOK-FOR-0", "time": "TIME-1"}, "LOOK-FOR-0": {"time-of": "TIME-0", "beneficiary": "HUMAN-1", "theme": "RESTAURANT-0", "scope": "EAT-0"}, "HUMAN-1": {"gender": "male"}, "TIME-1": {"dayOfWeek": -1, "hour": 7, "month": -1, "dayOfMonth": -1, "minute": 0, "pm": 1}, "MODALITY-0": {"attribituted-to": "HUMAN-0", "scope": "LOOK-FOR-0", "type": "volitive", "value": 1}, "EAT-0": {"scope": "evening", "location": "RESTAURANT-0"}, "TIME-0": {"dayOfWeek": 7, "hour": -1, "month": 11, "dayOfMonth": 7, "minute": -1, "pm": -1}}
+
 #a = datetime.datetime.now()
 processor = TMRProcessor()
-processor.restaurant_group.narrow('category', 'mexican', False)
+#processor.restaurant_group.narrow('category', 'mexican', False)
+#processor.restaurant_group.print_me()
+#processor.restaurant_group.narrow('category', 'fast food', False)
+#processor.restaurant_group.print_me()
+query_dict = processor.process_tmr(tmr1, {})
+#processor.restaurant_group.print_me()
+processor.restaurant_group.sort_output('niceness')
 processor.restaurant_group.print_me()
-processor.restaurant_group.narrow('category', 'fast food', False)
-processor.restaurant_group.print_me()
-#query_dict = processor.process_tmr(tmr1, {})
-#processor.restaurant_group.sort_output('niceness')
 #b = datetime.datetime.now()
 #c = b - a
 #print c.microseconds
