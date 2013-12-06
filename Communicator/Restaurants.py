@@ -496,7 +496,7 @@ class TMRProcessor:
         # Apply new type desire and store user preference
         if user_preference is not None:
             self.current_user.add_preference(desired_type)
-            self.restaurant_group.narrow('category', desired_type, False)
+            self.restaurant_group.narrow('category', user_preference, False)
 
         return self.restaurant_group.hist_dict()
 
@@ -547,10 +547,11 @@ def route_distance(lat1, long1, lat2, long2):
     return miles
 
 
-tmr1 = {"HUMAN-0": {"taste": "[CATEGORY-0]"}, "CATEGORY-0": {"type": "mexican"}}
-processor = TMRProcessor()
-query_dict = processor.process_tmr(tmr1, {})
-processor.restaurant_group.print_me()
+#tmr1 = {"HUMAN-0": {"taste": "[CATEGORY-0]"}, "CATEGORY-0": {"type": "mexican"}}
+#processor = TMRProcessor()
+#processor.restaurant_group.print_me()
+#query_dict = processor.process_tmr(tmr1, {})
+#processor.restaurant_group.print_me()
 
 #a = datetime.datetime.now()
 #processor = TMRProcessor()
