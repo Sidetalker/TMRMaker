@@ -343,6 +343,7 @@
 	"one|n": {},
 
 	"open|adj": {},
+	"open|v": {},
 
 	"outdoor|adj": {
 		"cat": ["Outdoor Dining"]
@@ -391,6 +392,8 @@
 		"syn": ["fish"]
 	},
 
+	"serve|v": {},
+
 	"set|n": {},
 
 	"should|m": {},
@@ -418,8 +421,6 @@
 		"cat": ["Steakhouse"],
 		"syn": ["steak"]
 	},
-	
-	"take|v": {},
 
 	"thank you|int": {
 		"syn": ["gracias", "thanks", "thank you very much"]
@@ -460,8 +461,8 @@
 		"cat": ["Drinking Water"]
 	},
 
+	"what|adj": {},
 	"what|qs": {},
-	"what|n": {},
 	"when|qs": {},
 	"when|done-to-relativiser": {},
 	"where|qs": {},
