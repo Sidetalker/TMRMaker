@@ -536,10 +536,42 @@ public class Deriver {
 		return false;
 	}
 
+	private void cleanTMRs() {
+		Iterator<Entry<SentencePart, TMR>> iterator = tmrs.entrySet()
+				.iterator();
+		TMR timeTMR = null;
+		while (iterator.hasNext()) {
+			Entry<SentencePart, TMR> curEntry = iterator.next();
+			TMR cur = curEntry.getValue();
+			if (cur.getIdentifier().equalsIgnoreCase("TIME")) {
+				if (timeTMR == null) {
+					timeTMR = cur;
+				} else {
+					Iterator<Entry<String, Object>> propIterator = cur.properties
+							.entrySet().iterator();
+					while (propIterator.hasNext()) {
+						Entry<String, Object> curProp = propIterator.next();
+						timeTMR.properties.put(curProp.getKey(),
+								curProp.getValue());
+					}
+				}
+			}
+		}
+		iterator = tmrs.entrySet().iterator();
+
+		while (iterator.hasNext()) {
+			Entry<SentencePart, TMR> curEntry = iterator.next();
+			TMR cur = curEntry.getValue();
+			if (cur.getIdentifier().equalsIgnoreCase("TIME") && timeTMR != cur) {
+				iterator.remove();
+			}
+		}
+	}
+
 	private final static boolean showAllTMRS = false;
 
 	public static void main(String[] args) {
-		String sentence = "At what time does Taco Bell open?";
+		String sentence = "I want to find a nice place for dinner with my father tomorrow at 7pm.";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
@@ -577,6 +609,7 @@ public class Deriver {
 			System.out.println(bestNum);
 			if (bestTMRIndex != -1) {
 				deriver.tmrs = tmrList.get(bestTMRIndex);
+				deriver.cleanTMRs();
 				deriver.outputTMRs();
 			}
 		}

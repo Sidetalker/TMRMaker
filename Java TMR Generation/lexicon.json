@@ -397,7 +397,9 @@
 
 	"set|n": {},
 
-	"should|m": {},
+	"should|m": {
+		"syn": ["ought"]
+	},
 
 	"show|v": {},
 
@@ -464,11 +466,13 @@
 		"cat": ["Drinking Water"]
 	},
 
-	"what|adj": {},
+	"what|n": {},
 	"what|qs": {},
 	"what|choose": {},
 	"which|choose": {},
-	"when|qs": {},
+	"when|qs": {
+		"syn": ["what time"]
+	},
 	"when|done-to-relativiser": {},
 	"where|qs": {},
 	"where|done-to-relativiser": {},
