@@ -253,6 +253,7 @@ class RestaurantGroup:
     sorted_by = None
     query_current = 0
     query_name = None
+    query_var = None
     query_values = []
 
     def __init__(self, the_user):
@@ -265,6 +266,7 @@ class RestaurantGroup:
         self.current_user = the_user
         self.sorted_by = None
         self.query_current = 0
+        self.query_var = None
         self.query_name = None
         self.query_values = []
         self.populate()
@@ -324,7 +326,7 @@ class RestaurantGroup:
                 if self.arg_category != 0 and query in self.categories:
                     self.arg_category -= 1
                     self.categories = [x for x in self.categories if query != x]
-            else:
+            elif self.arg_category is not None:
                 self.arg_category += 1
                 self.categories.append(query)
 
@@ -461,8 +463,14 @@ class TMRProcessor:
                 self.restaurant_group.query_values = search_term
                 self.restaurant_group.query_current = 1
                 self.restaurant_group.query_name = name
+                self.restaurant_group.query_var = None
                 self.restaurant_group.narrow('info', None, False)
                 return self.restaurant_group.hist_dict()
+            #else:
+            #    self.restaurant_group.query_values = search_term
+            #    self.restaurant_group.query_current = 1
+            #    self.restaurant_group.query_name = None
+            #    self.restaurant_group.query_var =
 
         # Check for user's current desire
         if 'MODALITY-0' in tmr:
@@ -576,7 +584,10 @@ processor = TMRProcessor()
 #processor.restaurant_group.print_me()
 query_dict = processor.process_tmr(tmr1, {})
 #processor.restaurant_group.print_me()
+query_dict = processor.process_tmr('', query_dict)
+print type(query_dict['category'][0][0])
 processor.restaurant_group.sort_output('niceness')
+#processor.restaurant_group.sort_output('niceness')
 processor.restaurant_group.print_me()
 #b = datetime.datetime.now()
 #c = b - a
