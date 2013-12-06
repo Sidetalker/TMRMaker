@@ -253,6 +253,7 @@ class RestaurantGroup:
     sorted_by = None
     query_current = 0
     query_name = None
+    query_var = None
     query_values = []
 
     def __init__(self, the_user):
@@ -265,6 +266,7 @@ class RestaurantGroup:
         self.current_user = the_user
         self.sorted_by = None
         self.query_current = 0
+        self.query_var = None
         self.query_name = None
         self.query_values = []
         self.populate()
@@ -324,7 +326,7 @@ class RestaurantGroup:
                 if self.arg_category != 0 and query in self.categories:
                     self.arg_category -= 1
                     self.categories = [x for x in self.categories if query != x]
-            else:
+            elif self.arg_category is not None:
                 self.arg_category += 1
                 self.categories.append(query)
 
@@ -447,6 +449,8 @@ class TMRProcessor:
         user_preference = None
         self.restaurant_group.query_current = 0
 
+        print self.restaurant_group.categories
+
         # Check for restaurant information query
         if 'RESTAURANT-0' in tmr:
             search_term = []
@@ -461,8 +465,16 @@ class TMRProcessor:
                 self.restaurant_group.query_values = search_term
                 self.restaurant_group.query_current = 1
                 self.restaurant_group.query_name = name
+                self.restaurant_group.query_var = None
                 self.restaurant_group.narrow('info', None, False)
                 return self.restaurant_group.hist_dict()
+            #else:
+            #    self.restaurant_group.query_values = search_term
+            #    self.restaurant_group.query_current = 1
+            #    self.restaurant_group.query_name = None
+            #    self.restaurant_group.query_var =
+
+        print self.restaurant_group.categories
 
         # Check for user's current desire
         if 'MODALITY-0' in tmr:
@@ -502,21 +514,21 @@ class TMRProcessor:
 
         # Apply history
         for what, value in queries.iteritems():
-            self.restaurant_group.narrow(what, value, False)
-
+            try:
+                if len(value) != 0:
+                    self.restaurant_group.narrow(what, value, False)
+            except TypeError:
+                pass
         # Apply new niceness desire
         if desired_niceness is not None:
             self.restaurant_group.narrow('niceness', desired_niceness, False)
-
         # Apply new type desire
         if desired_type is not None:
             self.restaurant_group.narrow('category', desired_type, False)
-
         # Apply new type desire and store user preference
         if user_preference is not None:
             self.current_user.add_preference(desired_type)
             self.restaurant_group.narrow('category', user_preference, False)
-
         return self.restaurant_group.hist_dict()
 
 
@@ -569,15 +581,22 @@ def route_distance(lat1, long1, lat2, long2):
 tmr1 = {"RESTAURANT-0": {"niceness": ">0.75"}, "HUMAN-0": {}, "SPECIFY-TIME-0": {"theme": "LOOK-FOR-0", "time": "TIME-1"}, "LOOK-FOR-0": {"time-of": "TIME-0", "beneficiary": "HUMAN-1", "theme": "RESTAURANT-0", "scope": "EAT-0"}, "HUMAN-1": {"gender": "male"}, "TIME-1": {"dayOfWeek": -1, "hour": 7, "month": -1, "dayOfMonth": -1, "minute": 0, "pm": 1}, "MODALITY-0": {"attribituted-to": "HUMAN-0", "scope": "LOOK-FOR-0", "type": "volitive", "value": 1}, "EAT-0": {"scope": "evening", "location": "RESTAURANT-0"}, "TIME-0": {"dayOfWeek": 7, "hour": -1, "month": 11, "dayOfMonth": 7, "minute": -1, "pm": -1}}
 
 #a = datetime.datetime.now()
-processor = TMRProcessor()
-#processor.restaurant_group.narrow('category', 'mexican', False)
+#processor = TMRProcessor()
+##processor.restaurant_group.narrow('category', 'mexican', False)
+##processor.restaurant_group.print_me()
+##processor.restaurant_group.narrow('category', 'fast food', False)
+##processor.restaurant_group.print_me()
+#print processor.restaurant_group.categories
+#query_dict = processor.process_tmr(tmr1, {})
+#print processor.restaurant_group.categories
+##processor.restaurant_group.print_me()
+#print processor.restaurant_group.categories
+#query_dict = processor.process_tmr('', query_dict)
+#print processor.restaurant_group.categories
+#processor.restaurant_group.sort_output('niceness')
+#print processor.restaurant_group.categories
+##processor.restaurant_group.sort_output('niceness')
 #processor.restaurant_group.print_me()
-#processor.restaurant_group.narrow('category', 'fast food', False)
-#processor.restaurant_group.print_me()
-query_dict = processor.process_tmr(tmr1, {})
-#processor.restaurant_group.print_me()
-processor.restaurant_group.sort_output('niceness')
-processor.restaurant_group.print_me()
 #b = datetime.datetime.now()
 #c = b - a
 #print c.microseconds
