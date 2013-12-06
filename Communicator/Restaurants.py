@@ -326,9 +326,10 @@ class RestaurantGroup:
                 if self.arg_category != 0 and query in self.categories:
                     self.arg_category -= 1
                     self.categories = [x for x in self.categories if query != x]
-            elif self.arg_category is not None:
-                self.arg_category += 1
-                self.categories.append(query)
+            elif self.arg_category is not 0:
+                if len(self.arg_category) != 0:
+                    self.arg_category += 1
+                    self.categories.append(query)
 
         # Add/remove a niceness restriction
         if what == 'niceness':
@@ -449,8 +450,6 @@ class TMRProcessor:
         user_preference = None
         self.restaurant_group.query_current = 0
 
-        print self.restaurant_group.categories
-
         # Check for restaurant information query
         if 'RESTAURANT-0' in tmr:
             search_term = []
@@ -473,8 +472,6 @@ class TMRProcessor:
             #    self.restaurant_group.query_current = 1
             #    self.restaurant_group.query_name = None
             #    self.restaurant_group.query_var =
-
-        print self.restaurant_group.categories
 
         # Check for user's current desire
         if 'MODALITY-0' in tmr:
@@ -515,7 +512,7 @@ class TMRProcessor:
         # Apply history
         for what, value in queries.iteritems():
             try:
-                if len(value) != 0:
+                if type(value) != 0:
                     self.restaurant_group.narrow(what, value, False)
             except TypeError:
                 pass
@@ -582,10 +579,19 @@ tmr1 = {"RESTAURANT-0": {"niceness": ">0.75"}, "HUMAN-0": {}, "SPECIFY-TIME-0": 
 
 #a = datetime.datetime.now()
 #processor = TMRProcessor()
-##processor.restaurant_group.narrow('category', 'mexican', False)
-##processor.restaurant_group.print_me()
-##processor.restaurant_group.narrow('category', 'fast food', False)
-##processor.restaurant_group.print_me()
+#query_dict = processor.process_tmr(tmr1, {})
+#processor.restaurant_group.narrow('niceness', 0.75, False)
+#print query_dict
+#query_dict = processor.process_tmr(tmr1, query_dict)
+#print query_dict
+#processor.restaurant_group.print_me()
+#print 'NEXT'
+#processor.restaurant_group.narrow('category', 'mexican', False)
+#processor.restaurant_group.print_me()
+#print 'NEXT'
+#processor.restaurant_group.narrow('category', 'fast food', False)
+#processor.restaurant_group.print_me()
+#print 'NEXT'
 #print processor.restaurant_group.categories
 #query_dict = processor.process_tmr(tmr1, {})
 #print processor.restaurant_group.categories
