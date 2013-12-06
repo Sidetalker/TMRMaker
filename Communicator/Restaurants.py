@@ -326,10 +326,17 @@ class RestaurantGroup:
                 if self.arg_category != 0 and query in self.categories:
                     self.arg_category -= 1
                     self.categories = [x for x in self.categories if query != x]
-            elif self.arg_category is not 0:
-                if len(self.arg_category) != 0:
-                    self.arg_category += 1
-                    self.categories.append(query)
+            else:
+                self.arg_category += 1
+                self.categories.append(query)
+                #print self.arg_category
+                #print 'ASFHSDF'
+                #if self.arg_category is not 0:
+                #    print self.arg_category
+                #    print 'HWEFJAI'
+                #    if len(self.arg_category) != 0:
+                #        self.arg_category += 1
+                #        self.categories.append(query)
 
         # Add/remove a niceness restriction
         if what == 'niceness':
@@ -459,6 +466,13 @@ class TMRProcessor:
                     search_term.append(value)
                 if value == 'name':
                     name = tmr['RESTAURANT-0'][value]
+                #if value == 'genre':
+                #    next_place = tmr['RESTAURANT-0'][value]
+                #    if next_place[0] == '[':
+                #            next_place = next_place[1:-1]
+                #
+                #    if next_place == 'CATEGORY-0':
+                #    if tmr[next_place]:
 
             if name is not None:
                 self.restaurant_group.query_values = search_term
@@ -467,11 +481,10 @@ class TMRProcessor:
                 self.restaurant_group.query_var = None
                 self.restaurant_group.narrow('info', None, False)
                 return self.restaurant_group.hist_dict()
-            #else:
-            #    self.restaurant_group.query_values = search_term
-            #    self.restaurant_group.query_current = 1
-            #    self.restaurant_group.query_name = None
-            #    self.restaurant_group.query_var =
+            else:
+                if len(search_term) >= 1:
+                    if search_term[0] == 'niceness':
+                        desired_niceness = float(tmr['RESTAURANT-0']['niceness'][1:])
 
         # Check for user's current desire
         if 'MODALITY-0' in tmr:
@@ -580,12 +593,12 @@ tmr1 = {"RESTAURANT-0": {"niceness": ">0.75"}, "HUMAN-0": {}, "SPECIFY-TIME-0": 
 #a = datetime.datetime.now()
 #processor = TMRProcessor()
 #query_dict = processor.process_tmr(tmr1, {})
-#processor.restaurant_group.narrow('niceness', 0.75, False)
+#processor.restaurant_group.narrow('niceness', 0.3, False)
 #print query_dict
-#query_dict = processor.process_tmr(tmr1, query_dict)
-#print query_dict
+##query_dict = processor.process_tmr(tmr1, query_dict)
+##print query_dict
 #processor.restaurant_group.print_me()
-#print 'NEXT'
+##print 'NEXT'
 #processor.restaurant_group.narrow('category', 'mexican', False)
 #processor.restaurant_group.print_me()
 #print 'NEXT'
