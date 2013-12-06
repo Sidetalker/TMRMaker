@@ -162,7 +162,6 @@ class Restaurant:
         self.schedule_starts = []
         self.schedule_ends = []
         self.niceness = 0
-        self.grab_hours
 
     # Compute niceness from rating, price and category preferences
     # Category preferences are loaded from user preferences which can
@@ -451,6 +450,9 @@ class TMRProcessor:
             if 'scope' in tmr['MODALITY-0']:
                 scope = tmr['MODALITY-0']['scope']
 
+                if scope[0] == '[':
+                    scope = scope[1:-1]
+
                 if scope in tmr and scope == 'CATEGORY-0':
                     if 'type' in tmr[scope]:
                         desired_type = tmr[scope]['type']
@@ -458,20 +460,28 @@ class TMRProcessor:
                     if 'theme' in tmr[scope]:
                         theme = tmr[scope]['theme']
 
+                        if theme[0] == '[':
+                            theme = theme[1:-1]
+
                         if theme in tmr and theme == 'RESTAURANT-0':
                             if 'niceness' in tmr[theme]:
                                 if tmr[theme]['niceness'][0] == '>' or tmr[theme]['niceness'][0] == '<':
                                     desired_niceness = float(tmr['RESTAURANT-0']['niceness'][1:])
                                 else:
-                                    desired_niceness = float(tmr['RESTAURANT-0']['niceness'])
+                                    desired_niceness = float(tmr['RESTAURANT-0']['niceness'][1:])
 
         # Check for human taste preference
         if 'HUMAN-0' in tmr:
+            print 'yes1'
             if 'taste' in tmr['HUMAN-0']:
                 location = tmr['HUMAN-0']['taste']
+                if location[0] == '[':
+                    location = location[1:-1]
 
                 if location in tmr:
+                    print 'yes3'
                     if 'type' in tmr[location]:
+                        print 'yes4'
                         user_preference = tmr[location]['type']
 
         # Apply history
@@ -540,9 +550,10 @@ def route_distance(lat1, long1, lat2, long2):
     return miles
 
 
-tmr1 = {'SPECIFY-TIME-0': {u'time': 'TIME-1'}, 'HUMAN-1': {u'gender': '"male"'}, 'HUMAN-0': {}, 'TIME-1': {u'minute': '0', u'dayOfMonth': '-1', u'pm': '-1', u'dayOfWeek': '-1', u'hour': '7', u'month': '-1'}, 'TIME-0': {u'minute': '-1', u'dayOfMonth': '25', u'pm': '-1', u'dayOfWeek': '2', u'hour': '-1', u'month': '10'}, 'RESTAURANT-0': {u'niceness': '.75'}, 'LOOK-FOR-0': {u'theme': 'RESTAURANT-0'}, 'MODALITY-0': {u'attribituted-to': 'HUMAN-0', u'scope': 'LOOK-FOR-0', u'type': '"volitive"', u'value': '1'}}
-tmr2 = {'HUMAN-0': {u'taste': '[CATEGORY-0]'}, 'CATEGORY-0': {u'type': 'mexican'}}
-
+tmr1 = {"HUMAN-0": {"taste": "[CATEGORY-0]"}, "CATEGORY-0": {"type": "mexican"}}
+processor = TMRProcessor()
+query_dict = processor.process_tmr(tmr1, {})
+processor.restaurant_group.print_me()
 
 #a = datetime.datetime.now()
 #processor = TMRProcessor()

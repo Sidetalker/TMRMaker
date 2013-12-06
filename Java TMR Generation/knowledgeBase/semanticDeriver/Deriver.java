@@ -544,7 +544,7 @@ public class Deriver {
 		// scanner.close();
 		// String sentence = "When is Joe's Pizza open?";
 		// String sentence = "I want to find a nice place to eat sometime.";
-		 String sentence = "I like Mexican";
+		 String sentence = "When is Taco Bell open?";
 		// String sentence = "I want to eat dinner with my father tomorrow at 7pm";
 		// String sentence =
 		// "Could you give me a place I could eat at sometime?";
