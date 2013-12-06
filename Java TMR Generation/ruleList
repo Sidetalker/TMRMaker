@@ -157,6 +157,7 @@ x,y st tmr.request-info(x), child(y,x), subj(y): tmr/theme(x,y)
 x,y,z st tmr.request-info(x), child(y,x), la(y), "nice"(y), child(z,x), tmr.restaurant(z): tmr/niceness>.75(z), ?tmr/niceness(z)
 x,y,z st tmr.request-info(x), "what"(y), qs(y), tmr.restaurant(z), tmr/theme(x,z): ?tmr/genre(z)
 x,y,z st tmr.request-info(x), "how"(y), qs(y), tmr.restaurant(z), tmr/theme(x,z): ?tmr/niceness(z)
+x,y,z st tmr.relate(x), tmr.request-info(z), tmr/range(x,y), tmr/domain(x,z): ?tmr/name(y)
 
 x st "have"(x), v(x) : serve_action(x)
 x st "serve"(x), v(x) : serve_action(x)

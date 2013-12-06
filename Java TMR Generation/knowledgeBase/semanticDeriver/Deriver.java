@@ -571,7 +571,7 @@ public class Deriver {
 	private final static boolean showAllTMRS = false;
 
 	public static void main(String[] args) {
-		String sentence = "I want to find a nice place for dinner with my father tomorrow at 7pm.";
+		String sentence = "What is a nice chinese place?";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
