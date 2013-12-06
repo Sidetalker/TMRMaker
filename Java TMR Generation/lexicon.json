@@ -1,10 +1,4 @@
 {
-	"Visa|n": {},
-	"American Express|n": {},
-	"Master Card|n": {
-		"syn": ["MasterCard"]
-	},
-
 	"a|det": {},
 
 	"accept|v": {},
@@ -13,6 +7,8 @@
 		"cat": ["New American", "Traditional American"]
 	},
 	"American|n": {},
+
+	"American Express|n": {},
 
 	"any|adj": {},
 
@@ -310,6 +306,10 @@
 		"cat": ["Lunch Spot"]
 	},
 
+	"Master Card|n": {
+		"syn": ["MasterCard"]
+	},
+
 	"meat|n": {
 		"cat": ["Barbecue Restaurants", "Chicken", "Hamburgers", "Steakhouse"]
 	},
@@ -453,6 +453,8 @@
 
 	"very|adv": {},
 
+	"Visa|n": {},
+
 	"want|v": {},
 
 	"want|v": {},
@@ -463,6 +465,8 @@
 
 	"what|adj": {},
 	"what|qs": {},
+	"what|choose": {},
+	"which|choose": {},
 	"when|qs": {},
 	"when|done-to-relativiser": {},
 	"where|qs": {},
@@ -474,6 +478,7 @@
 	"why|done-to-relativiser": {},
 
 	"with|prep": {},
+
 	"without|prep": {},
 
 	"worth|adj": {},
