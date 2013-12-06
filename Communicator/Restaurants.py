@@ -472,16 +472,13 @@ class TMRProcessor:
 
         # Check for human taste preference
         if 'HUMAN-0' in tmr:
-            print 'yes1'
             if 'taste' in tmr['HUMAN-0']:
                 location = tmr['HUMAN-0']['taste']
                 if location[0] == '[':
                     location = location[1:-1]
 
                 if location in tmr:
-                    print 'yes3'
                     if 'type' in tmr[location]:
-                        print 'yes4'
                         user_preference = tmr[location]['type']
 
         # Apply history
