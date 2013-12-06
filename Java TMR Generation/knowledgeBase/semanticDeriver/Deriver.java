@@ -539,18 +539,7 @@ public class Deriver {
 	private final static boolean showAllTMRS = false;
 
 	public static void main(String[] args) {
-		// Scanner scanner = new Scanner(System.in);
-		// String sentence = scanner.next();
-		// scanner.close();
-		// String sentence = "When is Joe's Pizza open?";
-		// String sentence = "I want to find a nice place to eat sometime.";
-		 String sentence = "When is Taco Bell open?";
-		// String sentence = "I want to eat dinner with my father tomorrow at 7pm";
-		// String sentence =
-		// "Could you give me a place I could eat at sometime?";
-//		String sentence = "Does Joe's Pizza take Visa?";
-		// String sentence =
-		// "I want to drive Joe's Pizza to cook father tomorrow.";
+		String sentence = "At what time does Taco Bell open?";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
