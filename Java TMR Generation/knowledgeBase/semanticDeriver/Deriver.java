@@ -539,22 +539,7 @@ public class Deriver {
 	private final static boolean showAllTMRS = false;
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
-		String sentence = "When is Taco Bell open?";
-=======
-		// Scanner scanner = new Scanner(System.in);
-		// String sentence = scanner.next();
-		// scanner.close();
-		// String sentence = "When is Joe's Pizza open?";
-		// String sentence = "I want to find a nice place to eat sometime.";
-		// String sentence = "I like Mexican.";
-		 String sentence = "When is Taco Bell open";
-		// String sentence =
-		// "Could you give me a place I could eat at sometime?";
-//		String sentence = "Does Joe's Pizza take Visa?";
-		// String sentence =
-		// "I want to drive Joe's Pizza to cook father tomorrow.";
->>>>>>> 51710ede1222a5d833ca51f3a6f89bc14036a82c
+		String sentence = "At what time does Taco Bell open?";
 		Deriver deriver = new Deriver();
 		deriver.addTheorems("ruleList");
 		deriver.addOntology("ontology.json");
