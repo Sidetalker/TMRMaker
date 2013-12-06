@@ -146,6 +146,7 @@ class Restaurant:
     schedule_starts = []
     schedule_ends = []
     niceness = -1
+    fit_rating = 0
 
     # Initialize directly from SQL query response
     def __init__(self, query_list):
@@ -162,6 +163,14 @@ class Restaurant:
         self.schedule_starts = []
         self.schedule_ends = []
         self.niceness = 0
+        self.fit_rating = 0
+
+    def compute_fit_rating(self, req_cats):
+        for category in req_cats:
+            if category in self.categories:
+                self.fit_rating += 1
+
+        self.fit_rating /= len(req_cats)
 
     # Compute niceness from rating, price and category preferences
     # Category preferences are loaded from user preferences which can
@@ -375,7 +384,14 @@ class RestaurantGroup:
             rest.print_me()
 
     # Sorts by niceness or distance (easily expandable)
-    def sort_output(self, parameter):
+    def sort_output(self, parameter=None):
+        for restaurant in self.filtered_restaurants:
+            restaurant.compute_fit_rating()
+
+        sorted_restaurants = sorted(self.filtered_restaurants, key=lambda restaurant:
+                                    restaurant.fit_rating, reverse=True)
+        self.filtered_restaurants = sorted_restaurants
+
         if parameter == 'niceness':
             # Update niceness computation as needed
             for rest in self.filtered_restaurants:
@@ -547,14 +563,12 @@ def route_distance(lat1, long1, lat2, long2):
     return miles
 
 
-#tmr1 = {"HUMAN-0": {"taste": "[CATEGORY-0]"}, "CATEGORY-0": {"type": "mexican"}}
-#processor = TMRProcessor()
-#processor.restaurant_group.print_me()
-#query_dict = processor.process_tmr(tmr1, {})
-#processor.restaurant_group.print_me()
-
 #a = datetime.datetime.now()
-#processor = TMRProcessor()
+processor = TMRProcessor()
+processor.restaurant_group.narrow('category', 'mexican', False)
+processor.restaurant_group.print_me()
+processor.restaurant_group.narrow('category', 'fast food', False)
+processor.restaurant_group.print_me()
 #query_dict = processor.process_tmr(tmr1, {})
 #processor.restaurant_group.sort_output('niceness')
 #b = datetime.datetime.now()
