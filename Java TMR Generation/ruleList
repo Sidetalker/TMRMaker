@@ -61,6 +61,10 @@ x,y,z,a st "when"(x), qs(x), child(x,y), QUES(y), child(z,y), "open"(z), v(z), c
 x,y,z st "with"(x), prep(x), child(y,x), child(x,z), tmr.human(y), tmr.event(z): tmr/beneficiary(z,y)// find dinner with my father
 x st "visa"(x), n(x) : tmr.payment-type(x), tmr/type["visa"](x)
 x st "yes"(x), int(x) : tmr.binary-response(x), tmr/value[true](x)
+x,y st tmr.event(x), child(y,x), do(y), tmr.human(y): tmr/beneficiary(x,y)
+x,y st tmr.event(x), child(y,x), do(y), tmr.object(y): tmr/theme(x,y)
+x,y st tmr.event(x), child(y,x), do(y), tmr.event(y): tmr/theme(x,y)
+x,y st tmr.event(x), child(y,x), subj(y), tmr.human(y): tmr/agent(x,y)
 
 //Number stuff here. Only goes up to ten now, should eventually be moved over to Andy's parsing stuff.
 x st "zero"(x) : tmr.number(x), tmr/value[0](x)
